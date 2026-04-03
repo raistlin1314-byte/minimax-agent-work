@@ -20,7 +20,6 @@
             overflow-x: hidden;
         }
 
-        /* 赛博朋克背景效果 */
         body::before {
             content: '';
             position: fixed;
@@ -43,7 +42,6 @@
             padding: 20px;
         }
 
-        /* 头部样式 */
         .header {
             text-align: center;
             padding: 30px 20px;
@@ -93,7 +91,6 @@
             margin-top: 10px;
         }
 
-        /* 情绪仪表盘 */
         .emotion-dashboard {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -121,13 +118,8 @@
             background: linear-gradient(90deg, #00F3FF, #FF2A6D);
         }
 
-        .emotion-card.up::before {
-            background: linear-gradient(90deg, #FF2A6D, #FF2A6D);
-        }
-
-        .emotion-card.down::before {
-            background: linear-gradient(90deg, #05FFA1, #05FFA1);
-        }
+        .emotion-card.up::before { background: #FF2A6D; }
+        .emotion-card.down::before { background: #05FFA1; }
 
         .emotion-icon {
             font-size: 2.5em;
@@ -146,7 +138,6 @@
             color: #888;
         }
 
-        /* 指数卡片 */
         .index-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -170,16 +161,10 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #00F3FF, #FF2A6D);
         }
 
-        .index-card.up::after {
-            background: linear-gradient(90deg, #FF2A6D, #FF2A6D);
-        }
-
-        .index-card.down::after {
-            background: linear-gradient(90deg, #05FFA1, #05FFA1);
-        }
+        .index-card.up::after { background: linear-gradient(90deg, #FF2A6D, #FF2A6D); }
+        .index-card.down::after { background: linear-gradient(90deg, #05FFA1, #05FFA1); }
 
         .index-name {
             color: #00F3FF;
@@ -190,15 +175,8 @@
             gap: 8px;
         }
 
-        .index-name svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .index-code {
-            color: #666;
-            font-size: 0.85em;
-        }
+        .index-name svg { width: 20px; height: 20px; }
+        .index-code { color: #666; font-size: 0.85em; }
 
         .index-price {
             font-size: 2.2em;
@@ -206,13 +184,8 @@
             margin-bottom: 10px;
         }
 
-        .index-card.up .index-price {
-            color: #FF2A6D;
-        }
-
-        .index-card.down .index-price {
-            color: #05FFA1;
-        }
+        .index-card.up .index-price { color: #FF2A6D; }
+        .index-card.down .index-price { color: #05FFA1; }
 
         .index-change {
             display: flex;
@@ -221,13 +194,8 @@
             font-size: 1em;
         }
 
-        .index-card.up .index-change {
-            color: #FF2A6D;
-        }
-
-        .index-card.down .index-change {
-            color: #05FFA1;
-        }
+        .index-card.up .index-change { color: #FF2A6D; }
+        .index-card.down .index-change { color: #05FFA1; }
 
         .index-volume {
             color: #888;
@@ -237,17 +205,16 @@
             border-top: 1px solid rgba(0,243,255,0.1);
         }
 
-        /* 量能指示器 */
         .volume-indicator {
-            background: linear-gradient(135deg, rgba(255,42,109,0.1) 0%, rgba(5,11,20,0.95) 100%);
-            border: 1px solid rgba(255,42,109,0.3);
+            background: linear-gradient(135deg, rgba(5,255,161,0.1) 0%, rgba(5,11,20,0.95) 100%);
+            border: 1px solid rgba(5,255,161,0.3);
             border-radius: 15px;
             padding: 25px;
             margin-bottom: 25px;
         }
 
         .volume-title {
-            color: #FF2A6D;
+            color: #05FFA1;
             font-size: 1.3em;
             margin-bottom: 20px;
             display: flex;
@@ -264,17 +231,15 @@
 
         .volume-bar {
             flex: 1;
-            background: linear-gradient(180deg, #FF2A6D 0%, #05FFA1 100%);
             border-radius: 4px 4px 0 0;
             min-height: 20px;
             position: relative;
             transition: all 0.3s;
         }
 
-        .volume-bar:hover {
-            transform: scaleY(1.05);
-            box-shadow: 0 0 20px rgba(0,243,255,0.5);
-        }
+        .volume-bar.up { background: linear-gradient(180deg, #FF2A6D 0%, #FF6B8A 100%); }
+        .volume-bar.down { background: linear-gradient(180deg, #05FFA1 0%, #4DFFB4 100%); }
+        .volume-bar:hover { transform: scaleY(1.05); box-shadow: 0 0 20px rgba(5,255,161,0.5); }
 
         .volume-bar span {
             position: absolute;
@@ -294,13 +259,11 @@
             border-top: 1px solid rgba(0,243,255,0.1);
         }
 
-        .volume-stat {
-            text-align: center;
-        }
+        .volume-stat { text-align: center; }
 
         .volume-stat-value {
             font-size: 1.5em;
-            color: #00F3FF;
+            color: #05FFA1;
             font-weight: bold;
         }
 
@@ -310,7 +273,6 @@
             margin-top: 5px;
         }
 
-        /* 图表区域 */
         .charts-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -334,20 +296,11 @@
             gap: 10px;
         }
 
-        .chart {
-            height: 300px;
-        }
+        .chart { height: 300px; }
 
-        /* 概念气泡图 */
-        .bubble-chart {
-            grid-column: span 2;
-        }
+        .bubble-chart { grid-column: span 2; }
+        .bubble-chart .chart { height: 400px; }
 
-        .bubble-chart .chart {
-            height: 400px;
-        }
-
-        /* 词云区域 */
         .wordcloud-section {
             background: linear-gradient(135deg, rgba(0,243,255,0.08) 0%, rgba(5,11,20,0.95) 100%);
             border: 1px solid rgba(0,243,255,0.2);
@@ -378,26 +331,24 @@
             padding: 10px 25px;
             border-radius: 25px;
             font-size: 1.1em;
-            cursor: pointer;
+cursor: pointer;
             transition: all 0.3s;
         }
 
-        .word-tag:hover {
-            transform: scale(1.1);
-        }
+        .word-tag:hover { transform: scale(1.1); }
 
         .word-tag.level-1 {
-            background: rgba(255,42,109,0.3);
-            border: 1px solid #FF2A6D;
-            color: #FF2A6D;
+            background: rgba(5,255,161,0.3);
+            border: 1px solid #05FFA1;
+            color: #05FFA1;
             font-size: 1.5em;
             font-weight: bold;
         }
 
         .word-tag.level-2 {
-            background: rgba(255,42,109,0.2);
-            border: 1px solid rgba(255,42,109,0.7);
-            color: #FF2A6D;
+            background: rgba(5,255,161,0.2);
+            border: 1px solid rgba(5,255,161,0.7);
+            color: #05FFA1;
             font-size: 1.3em;
         }
 
@@ -409,23 +360,22 @@
         }
 
         .word-tag.level-4 {
-            background: rgba(5,255,161,0.2);
-            border: 1px solid rgba(5,255,161,0.7);
-            color: #05FFA1;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #AAA;
             font-size: 0.95em;
         }
 
         .word-tag.level-5 {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.3);
-            color: #AAA;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #777;
             font-size: 0.85em;
         }
 
-        /* 策略警示框 */
         .strategy-section {
             background: linear-gradient(135deg, rgba(255,42,109,0.1) 0%, rgba(0,243,255,0.05) 50%, rgba(5,255,161,0.1) 100%);
-            border: 2px solid rgba(0,243,255,0.3);
+            border: 2px solid rgba(255,42,109,0.3);
             border-radius: 15px;
             padding: 25px;
             margin-bottom: 25px;
@@ -438,7 +388,7 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            border: 2px solid #00F3FF;
+            border: 2px solid #FF2A6D;
         }
 
         .strategy-section::before {
@@ -456,7 +406,7 @@
         }
 
         .strategy-title {
-            color: #00F3FF;
+            color: #FF2A6D;
             font-size: 1.4em;
             margin-bottom: 20px;
             display: flex;
@@ -477,34 +427,14 @@
             border-left: 4px solid;
         }
 
-        .strategy-card.bull {
-            border-left-color: #FF2A6D;
-        }
+        .strategy-card.bull { border-left-color: #FF2A6D; }
+        .strategy-card.bear { border-left-color: #05FFA1; }
+        .strategy-card.neutral { border-left-color: #00F3FF; }
 
-        .strategy-card.bear {
-            border-left-color: #05FFA1;
-        }
-
-        .strategy-card.neutral {
-            border-left-color: #00F3FF;
-        }
-
-        .strategy-card h4 {
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-
-        .strategy-card.bull h4 {
-            color: #FF2A6D;
-        }
-
-        .strategy-card.bear h4 {
-            color: #05FFA1;
-        }
-
-        .strategy-card.neutral h4 {
-            color: #00F3FF;
-        }
+        .strategy-card h4 { margin-bottom: 10px; font-size: 1.1em; }
+        .strategy-card.bull h4 { color: #FF2A6D; }
+        .strategy-card.bear h4 { color: #05FFA1; }
+        .strategy-card.neutral h4 { color: #00F3FF; }
 
         .strategy-card p {
             color: #AAA;
@@ -512,17 +442,16 @@
             line-height: 1.6;
         }
 
-        /* 社媒情绪区 */
         .social-section {
-            background: linear-gradient(135deg, rgba(5,255,161,0.08) 0%, rgba(5,11,20,0.95) 100%);
-            border: 1px solid rgba(5,255,161,0.3);
+            background: linear-gradient(135deg, rgba(255,42,109,0.08) 0%, rgba(5,11,20,0.95) 100%);
+            border: 1px solid rgba(255,42,109,0.3);
             border-radius: 15px;
             padding: 25px;
             margin-bottom: 25px;
         }
 
         .social-title {
-            color: #05FFA1;
+            color: #FF2A6D;
             font-size: 1.3em;
             margin-bottom: 20px;
             display: flex;
@@ -558,9 +487,7 @@
             gap: 10px;
         }
 
-        .social-item:last-child {
-            border-bottom: none;
-        }
+        .social-item:last-child { border-bottom: none; }
 
         .social-item .rank {
             background: linear-gradient(135deg, #00F3FF, #FF2A6D);
@@ -570,7 +497,6 @@
             min-width: 20px;
         }
 
-        /* 底部 */
         .footer {
             text-align: center;
             padding: 20px;
@@ -580,164 +506,140 @@
             margin-top: 20px;
         }
 
-        .footer .tech {
-            color: #00F3FF;
-        }
+        .footer .tech { color: #00F3FF; }
 
-        /* 动画效果 */
         @keyframes glow {
-            0%, 100% { box-shadow: 0 0 5px rgba(0,243,255,0.5); }
-            50% { box-shadow: 0 0 20px rgba(0,243,255,0.8), 0 0 30px rgba(0,243,255,0.4); }
+            0%, 100% { box-shadow: 0 0 5px rgba(255,42,109,0.5); }
+            50% { box-shadow: 0 0 20px rgba(255,42,109,0.8), 0 0 30px rgba(255,42,109,0.4); }
         }
 
-        .glow {
-            animation: glow 2s ease-in-out infinite;
-        }
+        .glow { animation: glow 2s ease-in-out infinite; }
 
-        /* 响应式 */
         @media (max-width: 1024px) {
-            .charts-grid {
-                grid-template-columns: 1fr;
-            }
-            .bubble-chart {
-                grid-column: span 1;
-            }
+            .charts-grid { grid-template-columns: 1fr; }
+            .bubble-chart { grid-column: span 1; }
         }
 
         @media (max-width: 768px) {
-            .emotion-dashboard,
-            .index-grid,
-            .strategy-grid,
-            .social-grid {
-                grid-template-columns: 1fr;
-            }
-            .header h1 {
-                font-size: 1.6em;
-            }
+            .emotion-dashboard, .index-grid, .strategy-grid, .social-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.6em; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- 头部 -->
         <div class="header">
             <h1>A股市场情绪分析报告</h1>
             <div class="subtitle">CYBERPUNK EDITION</div>
-            <div class="datetime">2026年4月3日 · 收盘数据</div>
+            <div class="datetime">2026年4月3日 · 收盘数据（已更新）</div>
         </div>
 
-        <!-- 情绪仪表盘 -->
         <div class="emotion-dashboard">
-            <div class="emotion-card">
+            <div class="emotion-card down">
                 <div class="emotion-icon">📊</div>
                 <div class="emotion-label">市场情绪</div>
-                <div class="emotion-value" style="color: #FF2A6D;">贪婪</div>
+                <div class="emotion-value" style="color: #05FFA1;">恐慌</div>
             </div>
-            <div class="emotion-card">
+            <div class="emotion-card down">
                 <div class="emotion-icon">🔥</div>
                 <div class="emotion-label">热点强度</div>
-                <div class="emotion-value">78%</div>
+                <div class="emotion-value">35%</div>
             </div>
-            <div class="emotion-card">
+            <div class="emotion-card down">
                 <div class="emotion-icon">💎</div>
                 <div class="emotion-label">资金流向</div>
-                <div class="emotion-value">净流入</div>
+                <div class="emotion-value">净流出</div>
             </div>
             <div class="emotion-card">
                 <div class="emotion-icon">⚡</div>
                 <div class="emotion-label">波动率</div>
-                <div class="emotion-value">中等</div>
+                <div class="emotion-value">较高</div>
             </div>
         </div>
 
-        <!-- 指数卡片 -->
         <div class="index-grid">
-            <div class="index-card up">
+            <div class="index-card down">
                 <div class="index-name">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
                     上证指数
                     <span class="index-code">000001.SH</span>
                 </div>
-                <div class="index-price">3,948.55</div>
+                <div class="index-price">3,880.10</div>
                 <div class="index-change">
-                    <span>+1.46%</span>
-                    <span>+56.87点</span>
+                    <span>-1.00%</span>
+                    <span>-39.29点</span>
                 </div>
-                <div class="index-volume">成交额：约12,580亿</div>
+                <div class="index-volume">成交额：7,138亿</div>
             </div>
-            <div class="index-card up">
+            <div class="index-card down">
                 <div class="index-name">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
                     深证成指
                     <span class="index-code">399001.SZ</span>
                 </div>
-                <div class="index-price">13,706.52</div>
+                <div class="index-price">13,352.90</div>
                 <div class="index-change">
-                    <span>+1.70%</span>
-                    <span>+228.46点</span>
+                    <span>-0.99%</span>
+                    <span>-133.62点</span>
                 </div>
-                <div class="index-volume">成交额：约7,650亿</div>
+                <div class="index-volume">成交额：9,427亿</div>
             </div>
-            <div class="index-card up">
+            <div class="index-card down">
                 <div class="index-name">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
                     创业板指
                     <span class="index-code">399006.SZ</span>
                 </div>
-                <div class="index-price">3,247.52</div>
+                <div class="index-price">3,170.00</div>
                 <div class="index-change">
-                    <span>+1.96%</span>
-                    <span>+62.57点</span>
+                    <span>-0.73%</span>
+                    <span>-23.65点</span>
                 </div>
-                <div class="index-volume">成交额：约3,200亿</div>
+                <div class="index-volume">成交额：约3,500亿</div>
             </div>
         </div>
 
-        <!-- 量能指示器 -->
         <div class="volume-indicator">
             <div class="volume-title">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M3 13h2v8H3v-8zm4-6h2v14H7V7zm4-4h2v18h-2V3zm4 8h2v10h-2V11zm4-4h2v14h-2V7z"/></svg>
                 市场量能监测
             </div>
             <div class="volume-bars">
-                <div class="volume-bar" style="height: 65%;"><span>周一</span></div>
-                <div class="volume-bar" style="height: 58%;"><span>周二</span></div>
-                <div class="volume-bar" style="height: 72%;"><span>周三</span></div>
-                <div class="volume-bar" style="height: 85%;"><span>周四</span></div>
-                <div class="volume-bar" style="height: 95%;"><span>周五</span></div>
+                <div class="volume-bar up" style="height: 78%;"><span>周一</span></div>
+                <div class="volume-bar down" style="height: 72%;"><span>周二</span></div>
+                <div class="volume-bar up" style="height: 95%;"><span>周三</span></div>
+                <div class="volume-bar down" style="height: 85%;"><span>周四</span></div>
+                <div class="volume-bar down" style="height: 68%;"><span>周五</span></div>
             </div>
             <div class="volume-stats">
                 <div class="volume-stat">
-                    <div class="volume-stat-value">20,251亿</div>
+                    <div class="volume-stat-value">1.66万亿</div>
                     <div class="volume-stat-label">今日成交额</div>
                 </div>
                 <div class="volume-stat">
-                    <div class="volume-stat-value">+190亿</div>
-                    <div class="volume-stat-label">较昨日增量</div>
+                    <div class="volume-stat-value" style="color: #FF2A6D;">-1865亿</div>
+                    <div class="volume-stat-label">较昨日缩量</div>
                 </div>
                 <div class="volume-stat">
-                    <div class="volume-stat-value">2.02万亿</div>
-                    <div class="volume-stat-label">全市场总额</div>
+                    <div class="volume-stat-value">低量</div>
+                    <div class="volume-stat-label">量能状态</div>
                 </div>
                 <div class="volume-stat">
-                    <div class="volume-stat-value">活跃</div>
-                    <div class="volume-stat-label">市场状态</div>
+                    <div class="volume-stat-value">缩量调整</div>
+                    <div class="volume-stat-label">市场特征</div>
                 </div>
             </div>
         </div>
 
-        <!-- 图表区域 -->
         <div class="charts-grid">
-            <!-- 行业涨跌幅条形图 -->
             <div class="chart-container">
                 <div class="chart-title">
                     <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M5 9.2h3V19H5V9.2zM10.6 5h2.8v14h-2.8V5zm5.6 8H19v6h-2.8v-6z"/></svg>
-                    申万行业涨跌幅 Top10
+                    行业涨跌幅
                 </div>
                 <div id="industryChart" class="chart"></div>
             </div>
 
-            <!-- 概念板块热度 -->
             <div class="chart-container">
                 <div class="chart-title">
                     <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
@@ -746,7 +648,6 @@
                 <div id="conceptChart" class="chart"></div>
             </div>
 
-            <!-- 概念气泡图 -->
             <div class="chart-container bubble-chart">
                 <div class="chart-title">
                     <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><circle cx="12" cy="12" r="10"/></svg>
@@ -756,30 +657,26 @@
             </div>
         </div>
 
-        <!-- 词云区域 -->
         <div class="wordcloud-section">
             <div class="wordcloud-title">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
                 情绪关键词云
             </div>
             <div class="wordcloud-container">
-                <span class="word-tag level-1">创新药</span>
-                <span class="word-tag level-1">光模块CPO</span>
-                <span class="word-tag level-2">四月开门红</span>
-                <span class="word-tag level-2">AI算力</span>
-                <span class="word-tag level-3">硅光子</span>
-                <span class="word-tag level-3">半导体</span>
-                <span class="word-tag level-3">医疗美容</span>
-                <span class="word-tag level-4">数字货币</span>
-                <span class="word-tag level-4">可控核聚变</span>
-                <span class="word-tag level-4">游戏</span>
-                <span class="word-tag level-5">新能源汽车</span>
-                <span class="word-tag level-5">券商金股</span>
-                <span class="word-tag level-5">业绩兑现</span>
+                <span class="word-tag level-1">CPO概念</span>
+                <span class="word-tag level-1">高开低走</span>
+                <span class="word-tag level-2">激光雷达</span>
+                <span class="word-tag level-2">缩量下跌</span>
+                <span class="word-tag level-3">多元金融</span>
+                <span class="word-tag level-3">防御板块</span>
+                <span class="word-tag level-4">清明假期</span>
+                <span class="word-tag level-4">避险情绪</span>
+                <span class="word-tag level-5">红利资产</span>
+                <span class="word-tag level-5">年报季</span>
+                <span class="word-tag level-5">资金观望</span>
             </div>
         </div>
 
-        <!-- 社媒情绪 -->
         <div class="social-section">
             <div class="social-title">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
@@ -790,106 +687,95 @@
                     <h4>微博热门话题</h4>
                     <div class="social-item">
                         <span class="rank">1</span>
-                        <span>#A股四月开门红# - 三大指数集体收涨</span>
+                        <span>#A股高开低走# - 三大指数集体收跌</span>
                     </div>
                     <div class="social-item">
                         <span class="rank">2</span>
-                        <span>#创新药涨停潮# - 睿智医药领涨20CM</span>
+                        <span>#沪指失守3900点# - 成交额缩量明显</span>
                     </div>
                     <div class="social-item">
                         <span class="rank">3</span>
-                        <span>#光模块概念# - 算力硬件持续活跃</span>
+                        <span>#CPO概念领涨# - 科技股分化</span>
                     </div>
                     <div class="social-item">
                         <span class="rank">4</span>
-                        <span>#券商四月金股# - 中际旭创热度第一</span>
+                        <span>#节前资金谨慎# - 散户观望情绪浓厚</span>
                     </div>
                     <div class="social-item">
                         <span class="rank">5</span>
-                        <span>#制造业PMI重返扩张# - 利好信号</span>
+                        <span>#年报业绩地雷# - 多股闪崩</span>
                     </div>
                 </div>
                 <div class="social-card">
                     <h4>雪球热议</h4>
                     <div class="social-item">
                         <span class="rank">1</span>
-                        <span>创新药板块掀起涨停潮 - 津药药业5连板</span>
+                        <span>全市场超4700只个股下跌 - 恐慌情绪蔓延</span>
                     </div>
                     <div class="social-item">
                         <span class="rank">2</span>
-                        <span>光模块/硅光子技术持续发酵</span>
+                        <span>CPO、激光雷达概念逆势走强</span>
                     </div>
                     <div class="social-item">
                         <span class="rank">3</span>
-                        <span>AI算力产业链机会分析</span>
+                        <span>煤化工、水电等公用事业板块领跌</span>
                     </div>
                     <div class="social-item">
                         <span class="rank">4</span>
-                        <span>可控核聚变概念活跃</span>
+                        <span>节前效应明显 - 轻仓过节成共识</span>
                     </div>
                     <div class="social-item">
                         <span class="rank">5</span>
-                        <span>数字货币板块午后走强</span>
+                        <span>红包行情结束？清明前后操作建议</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 策略警示框 -->
         <div class="strategy-section">
             <div class="strategy-title">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
                 策略警示与建议
             </div>
             <div class="strategy-grid">
-                <div class="strategy-card bull">
-                    <h4>看多信号</h4>
-                    <p>• 4月开门红格局形成，政策支持力度不减<br>
-                    • 制造业PMI重返扩张区间，宏观经济企稳<br>
-                    • 科技成长赛道持续活跃，资金关注度高</p>
+                <div class="strategy-card bear">
+<h4>看空信号</h4>
+                    <p>• 三大指数集体下跌，沪指失守3900点<br>
+                    • 市场缩量明显，资金观望情绪浓厚<br>
+                    • 下跌个股超4400只，恐慌情绪蔓延</p>
                 </div>
                 <div class="strategy-card bear">
                     <h4>风险提示</h4>
-                    <p>• 地缘政治风险仍存（中东局势）<br>
-                    • 部分前期强势板块出现分化<br>
-                    • 外围市场波动可能传导影响</p>
+                    <p>• 地缘政治不确定性仍存<br>
+                    • 年报季业绩变脸风险释放<br>
+                    • 节前资金避险意愿强烈</p>
                 </div>
                 <div class="strategy-card neutral">
                     <h4>操作建议</h4>
-                    <p>• 关注科技成长主线（创新药、光模块、半导体）<br>
-                    • 适当配置业绩确定性高的行业龙头<br>
-                    • 控制仓位，注意热点轮动节奏</p>
+                    <p>• 降低仓位，轻仓过节<br>
+                    • 关注防御性板块（红利、银行）<br>
+                    • 控制风险，等待市场企稳信号</p>
                 </div>
                 <div class="strategy-card bull">
-                    <h4>重点关注</h4>
-                    <p>• 4月17日美国癌症研究协会(AACR)年会<br>
-                    • 券商4月金股配置机会<br>
-                    • 一季度业绩超预期个股</p>
+                    <h4>关注机会</h4>
+                    <p>• 科技主线回调后的低吸机会<br>
+                    • 一季度超预期个股<br>
+                    • 清明后政策催化方向</p>
                 </div>
             </div>
         </div>
 
-        <!-- 底部 -->
         <div class="footer">
             <p>数据来源：东方财富、同花顺、新浪财经、雪球 | <span class="tech">CYBERPUNK STYLE</span> | Matrix Agent 生成</p>
-            <p style="margin-top: 10px; color: #444;">报告时间：2026年04月03日 15:44 · 仅供参考，不构成投资建议</p>
+            <p style="margin-top: 10px; color: #444;">报告时间：2026年04月03日 16:00 · 仅供参考，不构成投资建议</p>
         </div>
     </div>
 
     <script>
-        // 行业涨跌幅图表
         var industryChart = echarts.init(document.getElementById('industryChart'));
         var industryOption = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: { type: 'shadow' }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
+            tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+            grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
             xAxis: {
                 type: 'value',
                 axisLine: { lineStyle: { color: '#00F3FF' } },
@@ -898,44 +784,41 @@
             },
             yAxis: {
                 type: 'category',
-                data: ['农林牧渔', '电力设备', '煤炭', '美容护理', '商贸零售', '医药生物', '通信', '传媒', '游戏', '医疗服务'],
+                data: ['公用事业', '煤炭', '水电', '农林牧渔', '医药商业', '多元金融', '通信设备', 'CPO概念', '激光雷达', '半导体'],
                 axisLine: { lineStyle: { color: '#00F3FF' } },
                 axisLabel: { color: '#CCC' }
             },
             series: [{
                 type: 'bar',
                 data: [
-                    { value: -2.32, itemStyle: { color: '#05FFA1' } },
-                    { value: -2.13, itemStyle: { color: '#05FFA1' } },
-                    { value: -1.83, itemStyle: { color: '#05FFA1' } },
-                    { value: -1.10, itemStyle: { color: '#05FFA1' } },
-                    { value: -0.80, itemStyle: { color: '#05FFA1' } },
-                    { value: 3.99, itemStyle: { color: '#FF2A6D' } },
-                    { value: 3.36, itemStyle: { color: '#FF2A6D' } },
-                    { value: 1.29, itemStyle: { color: '#FF2A6D' } },
-                    { value: 1.20, itemStyle: { color: '#FF2A6D' } },
-                    { value: 5.03, itemStyle: { color: '#FF2A6D' } }
+                    { value: -4.5, itemStyle: { color: '#05FFA1' } },
+                    { value: -3.8, itemStyle: { color: '#05FFA1' } },
+                    { value: -3.2, itemStyle: { color: '#05FFA1' } },
+                    { value: -2.8, itemStyle: { color: '#05FFA1' } },
+                    { value: -1.5, itemStyle: { color: '#05FFA1' } },
+                    { value: 2.5, itemStyle: { color: '#FF2A6D' } },
+                    { value: 3.1, itemStyle: { color: '#FF2A6D' } },
+                    { value: 4.2, itemStyle: { color: '#FF2A6D' } },
+                    { value: 3.8, itemStyle: { color: '#FF2A6D' } },
+                    { value: 1.2, itemStyle: { color: '#FF2A6D' } }
                 ],
                 barWidth: '60%',
-                itemStyle: {
-                    borderRadius: [0, 5, 5, 0]
-                }
+                itemStyle: { borderRadius: [0, 5, 5, 0] }
             }]
         };
         industryChart.setOption(industryOption);
 
-        // 概念板块雷达图
         var conceptChart = echarts.init(document.getElementById('conceptChart'));
         var conceptOption = {
             tooltip: {},
             radar: {
                 indicator: [
-                    { name: '创新药', max: 100 },
-                    { name: '光模块', max: 100 },
-                    { name: 'AI算力', max: 100 },
-                    { name: '半导体', max: 100 },
-                    { name: '医疗美容', max: 100 },
-                    { name: '数字货币', max: 100 }
+                    { name: 'CPO', max: 100 },
+                    { name: '激光雷达', max: 100 },
+                    { name: '多元金融', max: 100 },
+                    { name: '数字货币', max: 100 },
+                    { name: '通信设备', max: 100 },
+                    { name: '半导体', max: 100 }
                 ],
                 shape: 'polygon',
                 splitNumber: 4,
@@ -947,7 +830,7 @@
             series: [{
                 type: 'radar',
                 data: [{
-                    value: [95, 88, 82, 75, 68, 55],
+                    value: [92, 85, 75, 65, 70, 55],
                     name: '热度指数',
                     areaStyle: { color: 'rgba(255,42,109,0.3)' },
                     lineStyle: { color: '#FF2A6D', width: 2 },
@@ -957,7 +840,6 @@
         };
         conceptChart.setOption(conceptOption);
 
-        // 概念气泡图
         var bubbleChart = echarts.init(document.getElementById('bubbleChart'));
         var bubbleOption = {
             tooltip: {
@@ -966,12 +848,7 @@
                     return params.data.name + '<br/>热度: ' + params.data.value[2];
                 }
             },
-            grid: {
-                left: '3%',
-                right: '10%',
-                bottom: '3%',
-                containLabel: true
-            },
+            grid: { left: '3%', right: '10%', bottom: '3%', containLabel: true },
             xAxis: {
                 type: 'value',
                 name: '资金流入',
@@ -988,27 +865,21 @@
             },
             series: [{
                 type: 'scatter',
-                symbolSize: function(data) {
-                    return Math.sqrt(data[2]) * 2;
-                },
+                symbolSize: function(data) { return Math.sqrt(data[2]) * 2; },
                 data: [
-                    { name: '创新药', value: [85, 8.5, 95], itemStyle: { color: '#FF2A6D' } },
-                    { name: '光模块CPO', value: [78, 7.2, 88], itemStyle: { color: '#FF2A6D' } },
-                    { name: '医疗服务', value: [72, 6.8, 82], itemStyle: { color: '#FF2A6D' } },
-                    { name: 'AI算力', value: [68, 5.5, 75], itemStyle: { color: '#FF2A6D' } },
-                    { name: '半导体', value: [55, 4.2, 68], itemStyle: { color: '#00F3FF' } },
-                    { name: '数字货币', value: [48, 3.8, 55], itemStyle: { color: '#00F3FF' } },
-                    { name: '游戏', value: [45, 3.5, 52], itemStyle: { color: '#00F3FF' } },
-                    { name: '可控核聚变', value: [38, 3.0, 45], itemStyle: { color: '#05FFA1' } },
-                    { name: '覆铜板', value: [32, 2.5, 38], itemStyle: { color: '#05FFA1' } },
-                    { name: '新能源车', value: [25, 1.8, 30], itemStyle: { color: '#05FFA1' } }
+                    { name: 'CPO概念', value: [88, 4.2, 92], itemStyle: { color: '#FF2A6D' } },
+                    { name: '激光雷达', value: [78, 3.8, 85], itemStyle: { color: '#FF2A6D' } },
+                    { name: '多元金融', value: [65, 2.5, 75], itemStyle: { color: '#FF2A6D' } },
+                    { name: '通信设备', value: [55, 3.1, 70], itemStyle: { color: '#FF2A6D' } },
+                    { name: '煤炭', value: [-45, -3.8, 60], itemStyle: { color: '#05FFA1' } },
+                    { name: '公用事业', value: [-52, -4.5, 55], itemStyle: { color: '#05FFA1' } },
+                    { name: '水电', value: [-38, -3.2, 48], itemStyle: { color: '#05FFA1' } },
+                    { name: '农林牧渔', value: [-32, -2.8, 42], itemStyle: { color: '#05FFA1' } }
                 ],
                 label: {
                     show: true,
                     position: 'right',
-                    formatter: function(params) {
-                        return params.data.name;
-                    },
+                    formatter: function(params) { return params.data.name; },
                     color: '#CCC',
                     fontSize: 11
                 }
@@ -1016,7 +887,6 @@
         };
         bubbleChart.setOption(bubbleOption);
 
-        // 响应式
         window.addEventListener('resize', function() {
             industryChart.resize();
             conceptChart.resize();
