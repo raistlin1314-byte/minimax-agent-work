@@ -18,7 +18,7 @@
             color: #E0E0E0;
             min-height: 100vh;
             padding: 30px;
-            line-height: 1.6;
+            line-height: 1.7;
         }
         .container {
             max-width: 1600px;
@@ -32,7 +32,7 @@
             background: linear-gradient(135deg, rgba(0,243,255,0.1) 0%, rgba(255,42,109,0.1) 100%);
             border: 1px solid rgba(0,243,255,0.3);
             border-radius: 15px;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             position: relative;
             overflow: hidden;
         }
@@ -95,42 +95,39 @@
         .main-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            gap: 25px;
         }
         .full-width {
             grid-column: 1 / -1;
-        }
-        .third-width {
-            grid-column: span 1;
         }
         
         /* 指数卡片 */
         .index-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 18px;
             margin-bottom: 25px;
         }
         .index-card {
             background: rgba(0,243,255,0.05);
             border: 1px solid rgba(0,243,255,0.3);
             border-radius: 10px;
-            padding: 20px 15px;
+            padding: 18px 12px;
             text-align: center;
         }
         .index-name {
-            font-size: 1em;
+            font-size: 0.95em;
             color: #888;
             margin-bottom: 8px;
         }
         .index-value {
-            font-size: 1.8em;
+            font-size: 1.6em;
             font-weight: bold;
             color: #fff;
-            margin: 10px 0;
+            margin: 8px 0;
         }
         .index-change {
-            font-size: 1.2em;
+            font-size: 1.15em;
             font-weight: bold;
         }
         
@@ -138,58 +135,89 @@
         .stat-row {
             display: flex;
             justify-content: space-around;
-            padding: 20px 0;
+            padding: 18px 0;
             border-top: 1px solid rgba(0,243,255,0.1);
         }
         .stat-item {
             text-align: center;
-            padding: 10px 25px;
+            padding: 8px 20px;
         }
         .stat-value {
-            font-size: 2.2em;
+            font-size: 2em;
             font-weight: bold;
         }
         .stat-label {
-            font-size: 1em;
+            font-size: 0.95em;
             color: #888;
-            margin-top: 8px;
+            margin-top: 6px;
         }
         
-        /* 情绪仪表盘 */
-        .emotion-section {
+        /* ========== 情绪仪表盘区域 - 修复布局 ========== */
+        .emotion-card {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .emotion-row {
             display: flex;
             align-items: center;
-            justify-content: space-around;
-            padding: 20px 0;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 15px 0;
         }
-        .gauge-container {
-            width: 220px;
-            height: 140px;
+        .gauge-wrapper {
+            width: 200px;
+            height: 130px;
+            flex-shrink: 0;
         }
-        .emotion-info {
+        .emotion-score {
             text-align: center;
-            margin-left: 30px;
+            flex: 1;
         }
-        .emotion-main-label {
-            font-size: 2em;
+        .score-value {
+            font-size: 3.5em;
             font-weight: bold;
             color: #FF2A6D;
-            text-shadow: 0 0 15px rgba(255,42,109,0.5);
+            text-shadow: 0 0 20px rgba(255,42,109,0.6);
+            line-height: 1;
+        }
+        .score-label {
+            font-size: 1.3em;
+            color: #FF2A6D;
+            margin-top: 8px;
         }
         .emotion-tags {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
             margin-top: 15px;
         }
         .tag {
-            padding: 8px 20px;
+            padding: 8px 18px;
             border-radius: 25px;
-            font-size: 1em;
+            font-size: 0.95em;
         }
         .tag-greed { background: rgba(255,42,109,0.2); border: 1px solid #FF2A6D; color: #FF2A6D; }
         .tag-panic { background: rgba(5,255,161,0.2); border: 1px solid #05FFA1; color: #05FFA1; }
         .tag-watch { background: rgba(0,243,255,0.2); border: 1px solid #00F3FF; color: #00F3FF; }
+        
+        /* 情绪解读 */
+        .emotion-analysis {
+            padding: 18px;
+            background: rgba(5,255,161,0.05);
+            border: 1px solid rgba(5,255,161,0.2);
+            border-radius: 10px;
+        }
+        .emotion-analysis h4 {
+            color: #05FFA1;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+        .emotion-analysis p {
+            color: #bbb;
+            font-size: 1em;
+            line-height: 1.7;
+        }
         
         /* 颜色类 */
         .up { color: #FF2A6D; }
@@ -198,14 +226,17 @@
         /* 图表容器 */
         .chart-container {
             width: 100%;
-            height: 320px;
-            margin: 15px 0;
+            height: 280px;
+            margin: 10px 0;
         }
         .bubble-chart {
-            height: 380px;
+            height: 350px;
         }
         .wordcloud-chart {
-            height: 320px;
+            height: 280px;
+        }
+        .pie-chart {
+            height: 300px;
         }
         
         /* 警示框 */
@@ -213,23 +244,24 @@
             background: linear-gradient(135deg, rgba(255,42,109,0.1) 0%, rgba(0,243,255,0.05) 100%);
             border: 1px solid rgba(255,42,109,0.4);
             border-radius: 10px;
-            padding: 25px;
-            margin-top: 25px;
+            padding: 20px;
+            margin-top: 20px;
         }
         .warning-box h3 {
             color: #FF2A6D;
-            margin-bottom: 15px;
-            font-size: 1.2em;
+            margin-bottom: 12px;
+            font-size: 1.15em;
         }
         .warning-list {
             list-style: none;
         }
         .warning-list li {
-            padding: 12px 0;
-            padding-left: 25px;
+            padding: 10px 0;
+            padding-left: 22px;
             position: relative;
-            color: #ccc;
-            font-size: 1.05em;
+            color: #bbb;
+            font-size: 1em;
+            line-height: 1.6;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .warning-list li:last-child {
@@ -240,110 +272,109 @@
             position: absolute;
             left: 0;
             color: #00F3FF;
-            font-size: 1.1em;
+            font-size: 1em;
         }
         
         /* 行业列表 */
         .sector-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
         .sector-item {
             display: flex;
             align-items: center;
-            padding: 12px 15px;
+            padding: 10px 14px;
             background: rgba(0,243,255,0.03);
-            border-radius: 8px;
+            border-radius: 6px;
             border-left: 3px solid;
         }
         .sector-item.up { border-left-color: #FF2A6D; }
         .sector-item.down { border-left-color: #05FFA1; }
         .sector-name {
-            min-width: 120px;
-            font-size: 1.05em;
+            min-width: 110px;
+            font-size: 1em;
             color: #fff;
         }
         .bar-container {
             flex: 1;
-            height: 24px;
-            background: rgba(255,255,255,0.05);
+            height: 20px;
+            background: rgba(255,255,255,0.03);
             border-radius: 4px;
-            margin: 0 15px;
+            margin: 0 12px;
             overflow: hidden;
         }
         .bar {
             height: 100%;
             border-radius: 4px;
-            transition: width 0.5s ease;
         }
         .bar-up { background: linear-gradient(90deg, #FF2A6D, #ff6b9d); }
         .bar-down { background: linear-gradient(90deg, #05FFA1, #4dffcc); }
         .sector-change {
-            min-width: 80px;
+            min-width: 70px;
             text-align: right;
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1.05em;
         }
         
         /* 热股榜 */
         .hot-stocks {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            gap: 10px;
         }
         .stock-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 18px;
+            padding: 12px 15px;
             background: rgba(0,243,255,0.03);
-            border-radius: 8px;
-            border-left: 4px solid #00F3FF;
+            border-radius: 6px;
+            border-left: 3px solid #00F3FF;
         }
         .stock-name {
             color: #fff;
-            font-size: 1.05em;
+            font-size: 1em;
         }
         .stock-change {
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1.05em;
         }
         
         /* 总结区块 */
         .summary-section {
             background: rgba(5,255,161,0.05);
-            border: 1px solid rgba(5,255,161,0.3);
+            border: 1px solid rgba(5,255,161,0.25);
             border-radius: 10px;
-            padding: 25px;
-            margin-top: 25px;
+            padding: 20px;
+            margin-top: 20px;
         }
         .summary-section h3 {
             color: #05FFA1;
-            margin-bottom: 15px;
-            font-size: 1.2em;
+            margin-bottom: 12px;
+            font-size: 1.15em;
         }
         .summary-section p {
-            color: #ccc;
-            font-size: 1.05em;
-            line-height: 1.8;
+            color: #bbb;
+            font-size: 1em;
+            line-height: 1.75;
         }
         
         /* 页脚 */
         .footer {
             text-align: center;
-            padding: 30px;
+            padding: 25px;
             color: #666;
-            font-size: 1em;
-            margin-top: 35px;
+            font-size: 0.95em;
+            margin-top: 30px;
             border-top: 1px solid rgba(0,243,255,0.1);
         }
         .footer p {
-            margin: 8px 0;
+            margin: 6px 0;
         }
         
         /* 响应式 */
-        @media (max-width: 1200px) {
+        @media (max-width: 1100px) {
             .main-grid {
                 grid-template-columns: 1fr;
             }
@@ -364,8 +395,12 @@
             .hot-stocks {
                 grid-template-columns: 1fr;
             }
-            .emotion-section {
+            .emotion-row {
                 flex-direction: column;
+            }
+            .gauge-wrapper {
+                width: 180px;
+                height: 110px;
             }
         }
     </style>
@@ -387,17 +422,17 @@
                 <div class="index-cards">
                     <div class="index-card">
                         <div class="index-name">上证指数</div>
-                        <div class="index-value">4,021.58</div>
+                        <div class="index-value">4,055.55</div>
                         <div class="index-change up">+0.70%</div>
                     </div>
                     <div class="index-card">
                         <div class="index-name">深证成指</div>
-                        <div class="index-value">13,952.31</div>
+                        <div class="index-value">14,796.33</div>
                         <div class="index-change up">+2.05%</div>
                     </div>
                     <div class="index-card">
                         <div class="index-name">创业板指</div>
-                        <div class="index-value">3,307.84</div>
+                        <div class="index-value">3,626.27</div>
                         <div class="index-change up">+3.17%</div>
                     </div>
                 </div>
@@ -411,30 +446,33 @@
                         <div class="stat-label">涨停数</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-value down">9只</div>
+                        <div class="stat-value down">10只</div>
                         <div class="stat-label">跌停数</div>
                     </div>
                 </div>
             </div>
 
-            <!-- 市场情绪仪表盘 -->
+            <!-- 市场情绪仪表盘 - 修复布局 -->
             <div class="card">
                 <div class="card-title">市场情绪仪表盘</div>
-                <div class="emotion-section">
-                    <div class="gauge-container">
-                        <div id="emotionGauge" class="chart-container"></div>
-                    </div>
-                    <div class="emotion-info">
-                        <div class="emotion-main-label">贪婪</div>
-                        <div class="emotion-tags">
-                            <span class="tag tag-greed">贪婪</span>
-                            <span class="tag tag-watch">观望</span>
+                <div class="emotion-card">
+                    <div class="emotion-row">
+                        <div class="gauge-wrapper">
+                            <div id="emotionGauge" style="width:100%;height:100%;"></div>
+                        </div>
+                        <div class="emotion-score">
+                            <div class="score-value">78</div>
+                            <div class="score-label">情绪指数</div>
+                            <div class="emotion-tags">
+                                <span class="tag tag-greed">贪婪</span>
+                                <span class="tag tag-watch">观望</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="summary-section">
-                    <h3>市场情绪解读</h3>
-                    <p>今日市场情绪偏暖，创业板指大涨超3%带动市场做多人气。88只个股涨停显示短线赚钱效应良好，但成交额较上日缩量约735亿显示增量资金入场谨慎。</p>
+                    <div class="emotion-analysis">
+                        <h4>市场情绪解读</h4>
+                        <p>今日市场情绪偏暖，创业板指大涨超3%带动做多人气。88只个股涨停显示短线赚钱效应良好，但成交额较上日缩量约735亿显示增量资金入场谨慎。</p>
+                    </div>
                 </div>
             </div>
 
@@ -518,7 +556,7 @@
             <!-- 涨停主题分布 -->
             <div class="card full-width">
                 <div class="card-title">涨停主题分布</div>
-                <div id="pieChart" class="chart-container" style="height: 320px;"></div>
+                <div id="pieChart" class="pie-chart"></div>
             </div>
 
             <!-- 策略警示框 -->
@@ -527,8 +565,8 @@
                 <div class="warning-box">
                     <h3>投资策略提示</h3>
                     <ul class="warning-list">
-                        <li>科技成长风格占优：创业板指领涨，锂矿、钨概念、空间计算等题材持续活跃</li>
-                        <li>权重板块分化：宁德时代创历史新高，带动新能源板块走强</li>
+                        <li>科技成长风格占优：创业板指涨3.17%领涨，锂矿、钨概念、空间计算等题材持续活跃</li>
+                        <li>权重板块分化：宁德时代创历史新高，A股总市值突破2万亿元</li>
                         <li>连板股高度：圣阳股份6连板成为市场高度龙头，关注其对板块带动效应</li>
                         <li>量能隐忧：缩量上涨显示上涨动力有限，注意回调风险</li>
                         <li>外部扰动：美伊谈判进展积极，纳指11连涨创历史新高，外围环境偏暖</li>
@@ -536,20 +574,20 @@
                 </div>
                 <div class="summary-section">
                     <h3>综合研判</h3>
-                    <p>今日A股三大指数集体收涨，创业板指表现最为强势涨超3%。市场呈现"沪弱深强"格局，科技成长赛道多点开花。涨停个股达88只，市场短线情绪高涨。但需注意成交额出现缩量，指数连续反弹后面临60日均线压力，在量能不能有效放大的情况下，反弹持续性存疑。建议投资者控制仓位，关注业绩超预期个股，规避高位题材股追涨风险。</p>
+                    <p>今日A股三大指数集体收涨，创业板指表现最为强势涨超3%，继续刷新10年多新高。创业板成交额6666亿元创年内新高。市场呈现"沪弱深强"格局，科技成长赛道多点开花。涨停个股达88只，市场短线情绪高涨。宁德时代A股大涨4.44%，市值重回2万亿上方，带动新能源板块走强。但需注意成交额出现缩量，指数连续反弹后面临压力，在量能不能有效放大的情况下，反弹持续性存疑。</p>
                 </div>
             </div>
         </div>
 
         <!-- 页脚 -->
         <div class="footer">
-            <p>报告生成时间：2026年4月16日 17:35</p>
-            <p>数据来源：东方财富、同花顺、雪球 | 本报告仅供参考，不构成投资建议</p>
+            <p>报告生成时间：2026年4月16日 17:45 | 数据来源：东方财富、同花顺、雪球</p>
+            <p>本报告仅供参考，不构成投资建议</p>
         </div>
     </div>
 
     <script>
-        // 情绪仪表盘
+        // 情绪仪表盘 - 修复定位
         var emotionChart = echarts.init(document.getElementById('emotionGauge'));
         emotionChart.setOption({
             series: [{
@@ -559,11 +597,11 @@
                 min: 0,
                 max: 100,
                 splitNumber: 4,
-                radius: '110%',
-                center: ['50%', '90%'],
+                radius: '130%',
+                center: ['50%', '100%'],
                 axisLine: {
                     lineStyle: {
-                        width: 18,
+                        width: 15,
                         color: [
                             [0.3, '#05FFA1'],
                             [0.7, '#00F3FF'],
@@ -573,18 +611,18 @@
                 },
                 pointer: {
                     itemStyle: { color: '#00F3FF' },
-                    width: 6,
-                    length: '75%'
+                    width: 5,
+                    length: '60%'
                 },
                 axisTick: { show: false },
                 splitLine: {
-                    length: 12,
-                    lineStyle: { width: 2, color: '#666' }
+                    length: 10,
+                    lineStyle: { width: 2, color: '#555' }
                 },
                 axisLabel: {
-                    distance: -35,
-                    color: '#888',
-                    fontSize: 11,
+                    distance: -30,
+                    color: '#777',
+                    fontSize: 10,
                     formatter: function(value) {
                         if(value === 0) return '恐慌';
                         if(value === 50) return '中性';
@@ -592,14 +630,7 @@
                         return '';
                     }
                 },
-                detail: {
-                    valueAnimation: true,
-                    formatter: '78',
-                    color: '#FF2A6D',
-                    fontSize: 28,
-                    fontWeight: 'bold',
-                    offsetCenter: [0, -25]
-                },
+                detail: { show: false },
                 data: [{ value: 78 }]
             }]
         });
@@ -611,32 +642,32 @@
                 trigger: 'axis',
                 axisPointer: { type: 'shadow' }
             },
-            grid: { left: '3%', right: '4%', bottom: '8%', top: '10%', containLabel: true },
+            grid: { left: '3%', right: '4%', bottom: '10%', top: '8%', containLabel: true },
             xAxis: {
                 type: 'category',
                 data: ['周一', '周二', '周三', '周四', '周五'],
                 axisLine: { lineStyle: { color: '#00F3FF' } },
-                axisLabel: { color: '#888', fontSize: 12 }
+                axisLabel: { color: '#888', fontSize: 11 }
             },
             yAxis: {
                 type: 'value',
                 name: '成交额(万亿)',
-                nameTextStyle: { color: '#888', fontSize: 11 },
+                nameTextStyle: { color: '#666', fontSize: 10 },
                 axisLine: { show: false },
                 splitLine: { lineStyle: { color: 'rgba(0,243,255,0.1)' } },
-                axisLabel: { color: '#888', fontSize: 11 }
+                axisLabel: { color: '#888', fontSize: 10, formatter: '{value}' }
             },
             series: [{
                 name: '成交额',
                 type: 'bar',
-                barWidth: '35%',
+                barWidth: '30%',
                 itemStyle: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                         { offset: 0, color: '#FF2A6D' },
-                        { offset: 1, color: 'rgba(255,42,109,0.3)' }
+                        { offset: 1, color: 'rgba(255,42,109,0.25)' }
                     ])
                 },
-                data: [2.18, 2.45, 2.38, 2.34, 0.8]
+                data: [2.18, 2.45, 2.38, 2.34, 0.9]
             }]
         });
 
@@ -690,21 +721,13 @@
             { name: 'AI应用', value: 62 }
         ];
         conceptChart.setOption({
-            tooltip: {
-                trigger: 'item',
-                formatter: '{b}'
-            },
+            tooltip: { trigger: 'item', formatter: '{b}' },
             series: [{
                 type: 'graph',
                 layout: 'force',
                 roam: true,
-                symbolSize: function(val) {
-                    return val * 0.7 + 25;
-                },
-                force: {
-                    repulsion: 120,
-                    edgeLength: 100
-                },
+                symbolSize: function(val) { return val * 0.6 + 25; },
+                force: { repulsion: 100, edgeLength: 90 },
                 data: conceptData.map(function(item) {
                     return {
                         name: item.name,
@@ -718,12 +741,7 @@
                     };
                 }),
                 lineStyle: { opacity: 0.2, color: '#00F3FF' },
-                label: {
-                    show: true,
-                    color: '#fff',
-                    fontSize: 12,
-                    formatter: '{b}'
-                }
+                label: { show: true, color: '#fff', fontSize: 11, formatter: '{b}' }
             }]
         });
 
@@ -745,9 +763,7 @@
             { name: '储能', value: 65 },
             { name: '有色金属', value: 62 },
             { name: '通信', value: 60 },
-            { name: '航天军工', value: 58 },
-            { name: '游戏', value: 55 },
-            { name: '消费电子', value: 52 }
+            { name: '军工', value: 55 }
         ];
         wordChart.setOption({
             tooltip: { show: true },
@@ -758,13 +774,13 @@
                 top: 'center',
                 width: '90%',
                 height: '90%',
-                sizeRange: [14, 48],
-                rotationRange: [-30, 30],
-                gridSize: 10,
+                sizeRange: [14, 42],
+                rotationRange: [-25, 25],
+                gridSize: 8,
                 drawOutOfBound: true,
                 textStyle: {
                     color: function() {
-                        var colors = ['#00F3FF', '#FF2A6D', '#05FFA1', '#ff6b9d', '#4dffcc'];
+                        var colors = ['#00F3FF', '#FF2A6D', '#05FFA1', '#ff6b9d'];
                         return colors[Math.floor(Math.random() * colors.length)];
                     }
                 },
@@ -775,38 +791,27 @@
         // 涨停分布饼图
         var pieChart = echarts.init(document.getElementById('pieChart'));
         pieChart.setOption({
-            tooltip: {
-                trigger: 'item',
-                formatter: '{b}: {c}只 ({d}%)'
-            },
+            tooltip: { trigger: 'item', formatter: '{b}: {c}只 ({d}%)' },
             legend: {
                 orient: 'vertical',
-                right: '5%',
+                right: '3%',
                 top: 'center',
-                textStyle: { color: '#888', fontSize: 13 }
+                textStyle: { color: '#888', fontSize: 12 }
             },
             series: [{
                 type: 'pie',
-                radius: ['35%', '65%'],
-                center: ['40%', '50%'],
+                radius: ['30%', '60%'],
+                center: ['38%', '50%'],
                 avoidLabelOverlap: false,
-                itemStyle: {
-                    borderRadius: 8,
-                    borderColor: '#050B14',
-                    borderWidth: 2
-                },
-                label: {
-                    color: '#fff',
-                    fontSize: 13,
-                    formatter: '{b}\n{c}只'
-                },
+                itemStyle: { borderRadius: 6, borderColor: '#050B14', borderWidth: 2 },
+                label: { color: '#ccc', fontSize: 12, formatter: '{b}\n{c}只' },
                 data: [
                     { value: 18, name: '通信', itemStyle: { color: '#FF2A6D' } },
                     { value: 15, name: '有色金属', itemStyle: { color: '#00F3FF' } },
                     { value: 14, name: '计算机', itemStyle: { color: '#05FFA1' } },
                     { value: 12, name: '电子', itemStyle: { color: '#ff6b9d' } },
                     { value: 10, name: '电力设备', itemStyle: { color: '#4dffcc' } },
-                    { value: 19, name: '其他', itemStyle: { color: '#666' } }
+                    { value: 19, name: '其他', itemStyle: { color: '#555' } }
                 ]
             }]
         });
