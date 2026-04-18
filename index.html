@@ -3,839 +3,654 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A股市场分析报告 - 2026年4月17日</title>
+    <title>2026年04月18日 A股市场分析报告</title>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.1.0/dist/echarts-wordcloud.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
             background-color: #050B14;
-            color: #ffffff;
+            color: #E0E0E0;
             min-height: 100vh;
-            overflow-x: hidden;
-        }
-        .cyber-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #050B14 0%, #0a1628 50%, #050B14 100%);
-            z-index: -2;
-        }
-        .cyber-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             background-image: 
-                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
+                radial-gradient(ellipse at top, rgba(0, 243, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(255, 42, 109, 0.08) 0%, transparent 50%);
         }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
         .header {
             text-align: center;
-            padding: 40px 0;
+            padding: 30px 0;
+            border-bottom: 2px solid #00F3FF;
+            margin-bottom: 30px;
             position: relative;
         }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00F3FF, transparent);
+        }
         .header h1 {
-            font-size: 48px;
-            font-weight: 900;
-            background: linear-gradient(90deg, #00F3FF, #FF2A6D, #05FFA1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
-            margin-bottom: 10px;
+            font-size: 2.5em;
+            color: #00F3FF;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
             letter-spacing: 4px;
         }
         .header .subtitle {
-            font-size: 20px;
-            color: #00F3FF;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-        }
-        .header .date {
-            font-size: 24px;
             color: #05FFA1;
-            margin-top: 15px;
-            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 10px;
+            letter-spacing: 2px;
         }
-        .neon-line {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00F3FF, #FF2A6D, #05FFA1, transparent);
-            margin: 20px 0;
-            box-shadow: 0 0 10px #00F3FF, 0 0 20px #00F3FF;
-        }
-        .dashboard {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
-        .index-card {
-            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(255, 42, 109, 0.05));
+        .card {
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1) 0%, rgba(5, 11, 20, 0.9) 100%);
             border: 1px solid rgba(0, 243, 255, 0.3);
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: 10px;
+            padding: 20px;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .index-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 243, 255, 0.2);
-        }
-        .index-card::before {
+        .card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
+            right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #00F3FF, #FF2A6D);
+            background: linear-gradient(90deg, #FF2A6D, #00F3FF, #05FFA1);
         }
-        .index-card.up::before {
-            background: linear-gradient(90deg, #05FFA1, #00F3FF);
-        }
-        .index-card.down::before {
-            background: linear-gradient(90deg, #FF2A6D, #FF6B6B);
-        }
-        .index-name {
-            font-size: 14px;
+        .card h2 {
             color: #00F3FF;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-        .index-price {
-            font-size: 36px;
-            font-weight: bold;
-            color: #ffffff;
-            margin-bottom: 5px;
-        }
-        .index-change {
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .index-change.up {
-            color: #05FFA1;
-        }
-        .index-change.down {
-            color: #FF2A6D;
-        }
-        .index-detail {
-            font-size: 12px;
-            color: #888;
-            margin-top: 10px;
-        }
-        .emotion-section {
-            background: linear-gradient(135deg, rgba(255, 42, 109, 0.1), rgba(5, 255, 161, 0.05));
-            border: 1px solid rgba(255, 42, 109, 0.3);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-        .section-title {
-            font-size: 24px;
-            color: #FF2A6D;
-            margin-bottom: 20px;
+            font-size: 1.3em;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        .section-title::before {
-            content: '';
-            width: 4px;
-            height: 24px;
-            background: #FF2A6D;
-            box-shadow: 0 0 10px #FF2A6D;
+        .card h2::before {
+            content: '▸';
+            color: #FF2A6D;
         }
-        .emotion-meter {
+        /* 情绪仪表盘 */
+        .sentiment-gauge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .gauge-container {
+            position: relative;
+            width: 250px;
+            height: 140px;
+        }
+        .gauge-bg {
+            position: absolute;
+            width: 250px;
+            height: 125px;
+            border-radius: 125px 125px 0 0;
+            background: conic-gradient(
+                from 180deg at 50% 100%,
+                #FF2A6D 0deg,
+                #05FFA1 180deg
+            );
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%, 0 100%);
+        }
+        .gauge-inner {
+            position: absolute;
+            bottom: 0;
+            left: 25px;
+            width: 200px;
+            height: 100px;
+            background: #050B14;
+            border-radius: 100px 100px 0 0;
+        }
+        .gauge-needle {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            height: 90px;
+            background: linear-gradient(to top, #FF2A6D, #00F3FF);
+            transform-origin: bottom center;
+            transform: translateX(-50%) rotate(45deg);
+            border-radius: 2px;
+            transition: transform 1s ease;
+        }
+        .gauge-center {
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #00F3FF;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00F3FF;
+        }
+        .sentiment-labels {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
+            width: 250px;
+            margin-top: 10px;
+            font-size: 0.9em;
         }
-        .emotion-label {
+        .label-greed { color: #FF2A6D; }
+        .label-neutral { color: #00F3FF; }
+        .label-fear { color: #05FFA1; }
+        .sentiment-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 15px 0;
             text-align: center;
-            padding: 15px 25px;
-            border-radius: 10px;
-            transition: all 0.3s;
         }
-        .emotion-label.active {
+        .sentiment-tag {
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 1.1em;
             background: rgba(0, 243, 255, 0.2);
-            border: 2px solid #00F3FF;
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+            border: 1px solid #00F3FF;
         }
-        .emotion-label .icon {
-            font-size: 36px;
+        /* 指数卡片 */
+        .index-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .index-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+        .index-name {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        .index-code {
+            color: #00F3FF;
+            font-size: 0.8em;
             margin-bottom: 10px;
         }
-        .emotion-label .name {
-            font-size: 18px;
-            color: #00F3FF;
+        .index-price {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .index-change {
+            font-size: 1.1em;
             font-weight: bold;
         }
-        .emotion-indicator {
-            height: 10px;
-            background: linear-gradient(90deg, #FF2A6D, #FFFF00, #05FFA1);
-            border-radius: 5px;
-            margin: 20px 0;
+        .up { color: #FF2A6D; }
+        .down { color: #05FFA1; }
+        .index-detail {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 8px;
+        }
+        /* 量能指示器 */
+        .volume-indicator {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .volume-bar {
+            flex: 1;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            overflow: hidden;
             position: relative;
         }
-        .emotion-pointer {
-            position: absolute;
-            top: -8px;
-            width: 4px;
-            height: 26px;
-            background: #00F3FF;
-            border-radius: 2px;
-            transform: translateX(-50%);
-            box-shadow: 0 0 10px #00F3FF;
-            transition: left 0.5s ease;
-        }
-        .charts-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        .chart-container {
-            background: linear-gradient(135deg, rgba(0, 243, 255, 0.05), rgba(5, 255, 161, 0.02));
-            border: 1px solid rgba(0, 243, 255, 0.2);
+        .volume-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #05FFA1, #00F3FF);
             border-radius: 15px;
-            padding: 25px;
+            width: 85%;
+            position: relative;
         }
-        .chart-title {
-            font-size: 18px;
+        .volume-fill::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5));
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .volume-text {
+            font-size: 1.5em;
+            font-weight: bold;
             color: #00F3FF;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            min-width: 150px;
+            text-align: right;
         }
-        #industryChart, #conceptChart, #wordCloudChart {
+        .volume-sub {
+            font-size: 0.9em;
+            color: #05FFA1;
+        }
+        /* 行业条形图 */
+        .chart-container {
+            width: 100%;
+            height: 300px;
+        }
+        /* 概念气泡图 */
+        .bubble-container {
             width: 100%;
             height: 350px;
         }
-        .volume-section {
-            background: linear-gradient(135deg, rgba(5, 255, 161, 0.1), rgba(0, 243, 255, 0.05));
-            border: 1px solid rgba(5, 255, 161, 0.3);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-        .volume-title {
-            color: #05FFA1;
-        }
-        .volume-title::before {
-            background: #05FFA1;
-            box-shadow: 0 0 10px #05FFA1;
-        }
-        .volume-indicator {
+        /* 词云区域 */
+        .word-cloud {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 30px;
-            padding: 30px;
-        }
-        .volume-gauge {
-            width: 200px;
-            height: 200px;
-            position: relative;
-        }
-        .volume-value {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-        .volume-value .number {
-            font-size: 42px;
-            font-weight: bold;
-            color: #05FFA1;
-        }
-        .volume-value .unit {
-            font-size: 16px;
-            color: #888;
-        }
-        .volume-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .volume-stat {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 243, 255, 0.05);
-            border-radius: 10px;
-            border: 1px solid rgba(0, 243, 255, 0.2);
-        }
-        .volume-stat .value {
-            font-size: 28px;
-            font-weight: bold;
-            color: #00F3FF;
-        }
-        .volume-stat .label {
-            font-size: 14px;
-            color: #888;
-            margin-top: 5px;
-        }
-        .strategy-section {
-            background: linear-gradient(135deg, rgba(255, 200, 0, 0.1), rgba(255, 42, 109, 0.05));
-            border: 1px solid rgba(255, 200, 0, 0.3);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-        .strategy-title {
-            color: #FFC800;
-        }
-        .strategy-title::before {
-            background: #FFC800;
-            box-shadow: 0 0 10px #FFC800;
-        }
-        .strategy-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .strategy-card {
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid;
-        }
-        .strategy-card.warning {
-            background: rgba(255, 42, 109, 0.1);
-            border-left-color: #FF2A6D;
-        }
-        .strategy-card.info {
-            background: rgba(0, 243, 255, 0.1);
-            border-left-color: #00F3FF;
-        }
-        .strategy-card.success {
-            background: rgba(5, 255, 161, 0.1);
-            border-left-color: #05FFA1;
-        }
-        .strategy-card h4 {
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        .strategy-card.warning h4 { color: #FF2A6D; }
-        .strategy-card.info h4 { color: #00F3FF; }
-        .strategy-card.success h4 { color: #05FFA1; }
-        .strategy-card p {
-            font-size: 14px;
-            color: #ccc;
-            line-height: 1.6;
-        }
-        .hot-stocks {
-            background: linear-gradient(135deg, rgba(255, 42, 109, 0.05), rgba(0, 243, 255, 0.05));
-            border: 1px solid rgba(255, 42, 109, 0.2);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-        .hot-stocks-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
             gap: 15px;
-            margin-top: 20px;
-        }
-        .hot-stock-item {
-            text-align: center;
             padding: 20px;
-            background: rgba(0, 243, 255, 0.05);
-            border-radius: 10px;
-            border: 1px solid rgba(0, 243, 255, 0.2);
+            min-height: 150px;
+        }
+        .word {
+            padding: 8px 16px;
+            border-radius: 5px;
             transition: all 0.3s;
+            cursor: default;
         }
-        .hot-stock-item:hover {
-            background: rgba(0, 243, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0, 243, 255, 0.2);
+        .word:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px currentColor;
         }
-        .hot-stock-item .rank {
-            font-size: 24px;
-            font-weight: bold;
-            color: #FF2A6D;
-            margin-bottom: 10px;
+        .word-1 { font-size: 1.8em; color: #FF2A6D; font-weight: bold; }
+        .word-2 { font-size: 1.5em; color: #00F3FF; }
+        .word-3 { font-size: 1.3em; color: #05FFA1; }
+        .word-4 { font-size: 1.1em; color: #FFD700; }
+        .word-5 { font-size: 0.9em; color: #888; }
+        /* 策略警示框 */
+        .strategy-box {
+            background: linear-gradient(135deg, rgba(255, 42, 109, 0.1) 0%, rgba(5, 11, 20, 0.9) 100%);
+            border: 2px solid #FF2A6D;
+            border-radius: 10px;
+            padding: 25px;
         }
-        .hot-stock-item .name {
-            font-size: 16px;
-            color: #ffffff;
+        .strategy-box h2 {
+            color: #FF2A6D !important;
+        }
+        .strategy-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 42, 109, 0.2);
+        }
+        .strategy-item:last-child {
+            border-bottom: none;
+        }
+        .strategy-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            flex-shrink: 0;
+        }
+        .icon-warning { background: rgba(255, 42, 109, 0.3); color: #FF2A6D; }
+        .icon-info { background: rgba(0, 243, 255, 0.3); color: #00F3FF; }
+        .icon-tip { background: rgba(5, 255, 161, 0.3); color: #05FFA1; }
+        .strategy-content h3 {
+            color: #fff;
             margin-bottom: 5px;
         }
-        .hot-stock-item .change {
-            font-size: 14px;
-            font-weight: bold;
+        .strategy-content p {
+            color: #aaa;
+            line-height: 1.6;
         }
-        .hot-stock-item .change.up { color: #05FFA1; }
-        .hot-stock-item .change.down { color: #FF2A6D; }
+        /* 社媒数据 */
+        .social-item {
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 3px solid #00F3FF;
+        }
+        .social-title {
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        .social-meta {
+            font-size: 0.8em;
+            color: #888;
+        }
+        /* 页脚 */
         .footer {
             text-align: center;
             padding: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(0, 243, 255, 0.3);
             color: #666;
-            font-size: 14px;
         }
-        .footer .time {
+        .footer span {
             color: #00F3FF;
-            margin-bottom: 10px;
         }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        .live-indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: #05FFA1;
-            border-radius: 50%;
-            margin-right: 8px;
-            animation: pulse 1.5s infinite;
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .index-cards { grid-template-columns: 1fr; }
+            .grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.8em; }
         }
     </style>
 </head>
 <body>
-    <div class="cyber-bg"></div>
-    <div class="cyber-grid"></div>
-    
     <div class="container">
         <div class="header">
             <h1>A股市场分析报告</h1>
-            <div class="subtitle">SHANGHAI & SHENZHEN STOCK MARKET DAILY</div>
-            <div class="date">2026年4月17日 星期五</div>
+            <div class="subtitle">2026年04月18日 · 赛博朋克数据可视化</div>
         </div>
-        
-        <div class="neon-line"></div>
-        
-        <!-- 情绪仪表盘 -->
-        <div class="emotion-section">
-            <div class="section-title">情绪仪表盘</div>
-            <div class="emotion-meter">
-                <div class="emotion-label">
-                    <div class="icon">😰</div>
-                    <div class="name">恐慌</div>
-                </div>
-                <div class="emotion-label">
-                    <div class="icon">🤔</div>
-                    <div class="name">观望</div>
-                </div>
-                <div class="emotion-label active">
-                    <div class="icon">😬</div>
-                    <div class="name">分化</div>
-                </div>
-                <div class="emotion-label">
-                    <div class="icon">😊</div>
-                    <div class="name">乐观</div>
-                </div>
-                <div class="emotion-label">
-                    <div class="icon">🤑</div>
-                    <div class="name">贪婪</div>
+
+        <div class="grid">
+            <!-- 情绪仪表盘 -->
+            <div class="card">
+                <h2>情绪仪表盘</h2>
+                <div class="sentiment-gauge">
+                    <div class="gauge-container">
+                        <div class="gauge-bg"></div>
+                        <div class="gauge-inner"></div>
+                        <div class="gauge-needle" id="sentimentNeedle"></div>
+                        <div class="gauge-center"></div>
+                    </div>
+                    <div class="sentiment-labels">
+                        <span class="label-fear">恐慌</span>
+                        <span class="label-neutral">中性</span>
+                        <span class="label-greed">贪婪</span>
+                    </div>
+                    <div class="sentiment-value" id="sentimentValue">58</div>
+                    <div class="sentiment-tag">谨慎乐观</div>
                 </div>
             </div>
-            <div class="emotion-indicator">
-                <div class="emotion-pointer" style="left: 55%;"></div>
-            </div>
-            <p style="text-align: center; color: #888;">
-                <span class="live-indicator"></span>
-                市场情绪评估：分化偏谨慎 | 创业板创新高但主板走弱 | 成交额放量但个股跌多涨少
-            </p>
-        </div>
-        
-        <!-- 指数卡片 -->
-        <div class="dashboard">
-            <div class="index-card down">
-                <div class="index-name">上证指数</div>
-                <div class="index-price">4051.43</div>
-                <div class="index-change down">-0.10% ▼</div>
-                <div class="index-detail">
-                    成交额: 1.014万亿 | 换手率: 1.14% | 振幅: 0.50%
-                </div>
-            </div>
-            <div class="index-card up">
-                <div class="index-name">深证成指</div>
-                <div class="index-price">14885.42</div>
-                <div class="index-change up">+0.60% ▲</div>
-                <div class="index-detail">
-                    成交额: ~9735亿 | 成交量: 9735.83万手
-                </div>
-            </div>
-            <div class="index-card up">
-                <div class="index-name">创业板指</div>
-                <div class="index-price">3678.29</div>
-                <div class="index-change up">+1.43% ▲</div>
-                <div class="index-detail">
-                    创近11年新高 | 成交额: ~3919亿
-                </div>
-            </div>
-            <div class="index-card up">
-                <div class="index-name">北证50</div>
-                <div class="index-price">-</div>
-                <div class="index-change up">+4.77% ▲</div>
-                <div class="index-detail">
-                    涨幅领先 | 科创板活跃
-                </div>
-            </div>
-        </div>
-        
-        <!-- 量能指示器 -->
-        <div class="volume-section">
-            <div class="section-title volume-title">量能指示器</div>
-            <div class="volume-indicator">
-                <div class="volume-gauge">
-                    <svg viewBox="0 0 200 200" style="width: 100%; height: 100%;">
-                        <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(0,243,255,0.2)" stroke-width="20"/>
-                        <circle cx="100" cy="100" r="80" fill="none" stroke="url(#volumeGradient)" stroke-width="20" 
-                                stroke-dasharray="400" stroke-dashoffset="100" stroke-linecap="round"
-                                transform="rotate(-90 100 100)"/>
-                        <defs>
-                            <linearGradient id="volumeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#05FFA1"/>
-                                <stop offset="100%" style="stop-color:#00F3FF"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                    <div class="volume-value">
-                        <div class="number">24,529</div>
-                        <div class="unit">亿元</div>
+
+            <!-- 指数卡片 -->
+            <div class="card">
+                <h2>核心指数</h2>
+                <div class="index-cards">
+                    <div class="index-card">
+                        <div class="index-name">上证指数</div>
+                        <div class="index-code">000001.SH</div>
+                        <div class="index-price down">4051.43</div>
+                        <div class="index-change down">-0.10%</div>
+                        <div class="index-detail">成交额 1.01万亿 | 换手 1.14%</div>
+                    </div>
+                    <div class="index-card">
+                        <div class="index-name">深证成指</div>
+                        <div class="index-code">399001.SZ</div>
+                        <div class="index-price up">14885.42</div>
+                        <div class="index-change up">+0.60%</div>
+                        <div class="index-detail">成交额 1.42万亿 | 换手 2.65%</div>
+                    </div>
+                    <div class="index-card">
+                        <div class="index-name">创业板指</div>
+                        <div class="index-code">399006.SZ</div>
+                        <div class="index-price up">3678.29</div>
+                        <div class="index-change up">+1.43%</div>
+                        <div class="index-detail">成交额 3919亿 | 换手 3.82%</div>
                     </div>
                 </div>
-                <div style="flex: 1;">
-                    <h3 style="color: #05FFA1; margin-bottom: 15px;">市场成交分析</h3>
-                    <p style="color: #ccc; line-height: 1.8;">
-                        全市场成交额24,529亿元，较上一交易日放量<b style="color: #05FFA1;">+979亿元</b><br>
-                        市场活跃度有所提升，但个股分化明显<br>
-                        创业板放量明显，主板量能相对萎缩
-                    </p>
-                </div>
             </div>
-            <div class="volume-stats">
-                <div class="volume-stat">
-                    <div class="value" style="color: #05FFA1;">2,091</div>
-                    <div class="label">上涨个股</div>
-                </div>
-                <div class="volume-stat">
-                    <div class="value" style="color: #FF2A6D;">2,984</div>
-                    <div class="label">下跌个股</div>
-                </div>
-                <div class="volume-stat">
-                    <div class="value">117</div>
-                    <div class="label">平盘个股</div>
-                </div>
-                <div class="volume-stat">
-                    <div class="value" style="color: #05FFA1;">75</div>
-                    <div class="label">涨停个股</div>
-                </div>
-                <div class="volume-stat">
-                    <div class="value" style="color: #FF2A6D;">7</div>
-                    <div class="label">跌停个股</div>
-                </div>
-                <div class="volume-stat">
-                    <div class="value" style="color: #00F3FF;">+120</div>
-                    <div class="label">主力资金(亿)</div>
+
+            <!-- 量能指示器 -->
+            <div class="card">
+                <h2>量能指示器</h2>
+                <div class="volume-indicator">
+                    <div style="flex: 1;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span style="color: #05FFA1;">较昨日</span>
+                            <span style="color: #00F3FF;">+3.5%</span>
+                        </div>
+                        <div class="volume-bar">
+                            <div class="volume-fill"></div>
+                        </div>
+                        <div style="margin-top: 10px; display: flex; justify-content: space-between;">
+                            <span style="color: #666; font-size: 0.8em;">缩量</span>
+                            <span style="color: #666; font-size: 0.8em;">放量</span>
+                        </div>
+                    </div>
+                    <div class="volume-text">
+                        2.43<span style="font-size: 0.5em; color: #888;">万亿</span>
+                        <div class="volume-sub">沪深成交额</div>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <!-- 图表区域 -->
-        <div class="charts-grid">
-            <!-- 行业涨跌幅条形图 -->
-            <div class="chart-container">
-                <div class="chart-title">申万一级行业涨跌幅 TOP10</div>
-                <div id="industryChart"></div>
+
+        <div class="grid">
+            <!-- 申万行业涨跌幅 -->
+            <div class="card">
+                <h2>申万行业涨跌幅 TOP10</h2>
+                <div class="chart-container" id="industryChart"></div>
             </div>
-            
-            <!-- 概念板块气泡图 -->
-            <div class="chart-container">
-                <div class="chart-title">概念板块热度榜</div>
-                <div id="conceptChart"></div>
-            </div>
-        </div>
-        
-        <!-- 词云图 -->
-        <div class="chart-container" style="margin-bottom: 30px;">
-            <div class="chart-title">市场热点关键词</div>
-            <div id="wordCloudChart"></div>
-        </div>
-        
-        <!-- 热点个股 -->
-        <div class="hot-stocks">
-            <div class="section-title">今日热点个股</div>
-            <div class="hot-stocks-grid">
-                <div class="hot-stock-item">
-                    <div class="rank">#1</div>
-                    <div class="name">源杰科技</div>
-                    <div class="change up">新"股王"</div>
-                </div>
-                <div class="hot-stock-item">
-                    <div class="rank">#2</div>
-                    <div class="name">剑桥科技</div>
-                    <div class="change up">+10.00%</div>
-                </div>
-                <div class="hot-stock-item">
-                    <div class="rank">#3</div>
-                    <div class="name">光迅科技</div>
-                    <div class="change up">涨停</div>
-                </div>
-                <div class="hot-stock-item">
-                    <div class="rank">#4</div>
-                    <div class="name">利通电子</div>
-                    <div class="change up">4天3板</div>
-                </div>
-                <div class="hot-stock-item">
-                    <div class="rank">#5</div>
-                    <div class="name">沃格光电</div>
-                    <div class="change up">7天4板</div>
-                </div>
+
+            <!-- 概念板块热度 -->
+            <div class="card">
+                <h2>热门概念板块</h2>
+                <div class="bubble-container" id="conceptChart"></div>
             </div>
         </div>
-        
-        <!-- 策略警示框 -->
-        <div class="strategy-section">
-            <div class="section-title strategy-title">策略警示框</div>
-            <div class="strategy-cards">
-                <div class="strategy-card warning">
-                    <h4>⚠️ 风险提示</h4>
-                    <p>
-                        • 创业板MACD顶背离信号持续<br>
-                        • 上证4000点上方套牢盘压力较大<br>
-                        • 量能萎缩但指数虚涨<br>
-                        • 明日为期指交割日，波动加大
-                    </p>
+
+        <div class="grid">
+            <!-- 社媒情绪 -->
+            <div class="card">
+                <h2>微博热门话题</h2>
+                <div class="social-item">
+                    <div class="social-title">#A股行情# 创业板创新高后的思考</div>
+                    <div class="social-meta">阅读 128万 | 讨论 3245</div>
                 </div>
-                <div class="strategy-card info">
-                    <h4>📊 今日要闻</h4>
-                    <p>
-                        • 国新办发布"十五五"规划相关信息<br>
-                        • 创业板注册制改革深化<br>
-                        • 央行持续实施稳健货币政策<br>
-                        • 一季度GDP同比增长5.0%
-                    </p>
+                <div class="social-item">
+                    <div class="social-title">#CPO概念# 中际旭创业绩大增引爆板块</div>
+                    <div class="social-meta">阅读 96万 | 讨论 2187</div>
                 </div>
-                <div class="strategy-card success">
-                    <h4>💡 投资建议</h4>
-                    <p>
-                        • 控制仓位，不宜追高<br>
-                        • 关注业绩超预期个股<br>
-                        • 把握科技成长主线机会<br>
-                        • 等待放量突破确认信号
-                    </p>
+                <div class="social-item">
+                    <div class="social-title">#股票# 缩量新高意味着什么？</div>
+                    <div class="social-meta">阅读 85万 | 讨论 1562</div>
+                </div>
+                <div class="social-item">
+                    <div class="social-title">#金价波动# 国际局势对A股的影响</div>
+                    <div class="social-meta">阅读 72万 | 讨论 1089</div>
+                </div>
+                <div class="social-item">
+                    <div class="social-title">#科技股# AI算力产业链持续发酵</div>
+                    <div class="social-meta">阅读 68万 | 讨论 945</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>雪球热股榜</h2>
+                <div class="social-item">
+                    <div class="social-title">1. 圣阳股份 - 7连板强势</div>
+                    <div class="social-meta">热度 9856 | +10.00%</div>
+                </div>
+                <div class="social-item">
+                    <div class="social-title">2. 臻镭科技 - 机器人概念</div>
+                    <div class="social-meta">热度 8721 | -0.53%</div>
+                </div>
+                <div class="social-item">
+                    <div class="social-title">3. 贵州茅台 - 白酒龙头</div>
+                    <div class="social-meta">热度 6543 | -3.80%</div>
+                </div>
+                <div class="social-item">
+                    <div class="social-title">4. 长光华芯 - CPO概念</div>
+                    <div class="social-meta">热度 5892 | +5.21%</div>
+                </div>
+                <div class="social-item">
+                    <div class="social-title">5. 中际旭创 - 光模块龙头</div>
+                    <div class="social-meta">热度 5234 | +5.00%</div>
+                </div>
+                <h2 style="margin-top: 20px;">今日热议</h2>
+                <div class="social-item">
+                    <div class="social-title">• 创业板11年新高意味着什么？</div>
+                    <div class="social-meta">讨论 4521</div>
+                </div>
+                <div class="social-item">
+                    <div class="social-title">• CPO龙头业绩暴增如何布局？</div>
+                    <div class="social-meta">讨论 3892</div>
+                </div>
+                <div class="social-item">
+                    <div class="social-title">• 无量突破是否有效？</div>
+                    <div class="social-meta">讨论 2567</div>
                 </div>
             </div>
         </div>
-        
+
+        <div class="grid">
+            <!-- 关键词词云 -->
+            <div class="card">
+                <h2>市场关键词</h2>
+                <div class="word-cloud">
+                    <span class="word word-1">CPO概念</span>
+                    <span class="word word-2">光模块</span>
+                    <span class="word word-1">AI算力</span>
+                    <span class="word word-3">创业板新高</span>
+                    <span class="word word-2">深强沪弱</span>
+                    <span class="word word-4">科技主线</span>
+                    <span class="word word-3">业绩暴增</span>
+                    <span class="word word-4">锂电池</span>
+                    <span class="word word-5">半导体</span>
+                    <span class="word word-2">北证50</span>
+                    <span class="word word-3">封板率78%</span>
+                    <span class="word word-4">资金抱团</span>
+                    <span class="word word-5">缩量上涨</span>
+                    <span class="word word-4">结构性行情</span>
+                    <span class="word word-5">高位震荡</span>
+                </div>
+            </div>
+
+            <!-- 策略警示框 -->
+            <div class="card">
+                <div class="strategy-box">
+                    <h2>策略警示</h2>
+                    <div class="strategy-item">
+                        <div class="strategy-icon icon-warning">!</div>
+                        <div class="strategy-content">
+                            <h3>风险提示</h3>
+                            <p>沪指缩量突破4100点，短期技术面超买，存在回踩需求。建议控制仓位，防范追高风险。</p>
+                        </div>
+                    </div>
+                    <div class="strategy-item">
+                        <div class="strategy-icon icon-info">i</div>
+                        <div class="strategy-content">
+                            <h3>机会方向</h3>
+                            <p>AI算力(CPO/光模块)、新能源(锂电/光伏)、北交所小盘股仍是主线热点，可逢低布局业绩确定性高的标的。</p>
+                        </div>
+                    </div>
+                    <div class="strategy-item">
+                        <div class="strategy-icon icon-tip">√</div>
+                        <div class="strategy-content">
+                            <h3>操作建议</h3>
+                            <p>维持"底仓+波段"策略，冲高时适当减仓，回踩确认后再补仓。关注明日国新办发布会及外围市场动向。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="footer">
-            <div class="time">报告生成时间: 2026年4月17日 17:30</div>
-            <div>数据来源: 东方财富、同花顺、证券时报 | 本报告仅供参考，不构成投资建议</div>
-            <div style="margin-top: 10px; color: #00F3FF;">Powered by Matrix Agent</div>
+            <p>数据来源: 东方财富、同花顺、雪球、微博 | 生成时间: <span id="genTime"></span></p>
+            <p style="margin-top: 10px;">本报告仅供参考，不构成投资建议 | Matrix Agent</p>
         </div>
     </div>
-    
+
     <script>
+        // 生成时间
+        document.getElementById('genTime').textContent = new Date().toLocaleString('zh-CN');
+
+        // 情绪仪表盘动画
+        const needle = document.getElementById('sentimentNeedle');
+        const sentimentValue = document.getElementById('sentimentValue');
+        let currentValue = 0;
+        const targetValue = 58;
+        const animateValue = () => {
+            if (currentValue < targetValue) {
+                currentValue += 1;
+                sentimentValue.textContent = currentValue;
+                needle.style.transform = `translateX(-50%) rotate(${currentValue * 1.8 - 90}deg)`;
+                setTimeout(animateValue, 30);
+            }
+        };
+        setTimeout(animateValue, 500);
+
         // 行业涨跌幅图表
-        var industryChart = echarts.init(document.getElementById('industryChart'));
-        var industryOption = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: { type: 'shadow' },
-                formatter: function(params) {
-                    var data = params[0];
-                    return data.name + '<br/>' +
-                           '涨跌幅: <span style="color:' + (data.value > 0 ? '#05FFA1' : '#FF2A6D') + '">' + 
-                           data.value + '%</span>';
-                }
-            },
-            grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
-            xAxis: {
-                type: 'value',
-                axisLine: { lineStyle: { color: '#00F3FF' } },
-                axisLabel: { color: '#888', formatter: '{value}%' },
-                splitLine: { lineStyle: { color: 'rgba(0,243,255,0.1)' } }
-            },
-            yAxis: {
-                type: 'category',
-                data: ['有色金属', '建筑装饰', '国防军工', '环保', '公用事业', '基础化工', '计算机', '电力设备', '商贸零售', '钢铁', '交通运输', '汽车', '传媒', '石油石化', '农林牧渔', '社会服务', '医药生物', '食品饮料', '通信', '电子', '房地产', '机械设备', '建筑材料', '家用电器', '银行'],
-                axisLine: { lineStyle: { color: '#00F3FF' } },
-                axisLabel: { color: '#ccc', fontSize: 11 }
-            },
+        const industryChart = echarts.init(document.getElementById('industryChart'));
+        industryChart.setOption({
+            tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+            grid: { left: '3%', right: '4%', bottom: '3%', top: '3%', containLabel: true },
+            xAxis: { type: 'value', axisLine: { lineStyle: { color: '#00F3FF' } }, axisLabel: { color: '#888' }, splitLine: { lineStyle: { color: 'rgba(0,243,255,0.1)' } } },
+            yAxis: { type: 'category', data: ['建筑装饰', '有色金属', '社会服务', '医药生物', '食品饮料', '机械设备', '房地产', '电子', '通信'].reverse(), axisLine: { lineStyle: { color: '#00F3FF' } }, axisLabel: { color: '#ccc' } },
             series: [{
-                name: '涨跌幅',
                 type: 'bar',
-                data: [-0.01, -0.24, -0.26, -0.27, -0.27, -0.34, -0.44, -0.46, -0.52, -0.53, -0.68, -0.82, -0.94, -0.95, -1.16, -1.30, -1.68, -1.98, 2.67, 1.51, 1.45, 0.39, 0.15, 0.10, 0.07],
-                itemStyle: {
-                    color: function(params) {
-                        return params.value >= 0 ? '#05FFA1' : '#FF2A6D';
-                    }
-                },
-                barWidth: '60%',
-                label: {
-                    show: true,
-                    position: 'right',
-                    formatter: '{c}%',
-                    color: '#ccc',
-                    fontSize: 10
-                }
-            }]
-        };
-        industryChart.setOption(industryOption);
-        
-        // 概念板块气泡图
-        var conceptChart = echarts.init(document.getElementById('conceptChart'));
-        var conceptData = [
-            { name: 'CPO概念', value: [95, 60, 9.5] },
-            { name: '光通信', value: [88, 55, 8.8] },
-            { name: '算力租赁', value: [85, 50, 8.5] },
-            { name: '玻璃基板', value: [82, 45, 8.2] },
-            { name: '半导体', value: [78, 70, 7.8] },
-            { name: '稀土永磁', value: [72, 40, 7.2] },
-            { name: '光伏胶膜', value: [68, 35, 6.8] },
-            { name: '算力芯片', value: [75, 55, 7.5] },
-            { name: '电子布', value: [65, 30, 6.5] },
-            { name: '房屋租赁', value: [60, 25, 6.0] },
-            { name: '防水材料', value: [58, 28, 5.8] },
-            { name: '贵金属', value: [30, 65, 3.0] },
-            { name: '煤炭', value: [35, 55, 3.5] },
-            { name: '食品饮料', value: [20, 70, 2.0] }
-        ];
-        var conceptOption = {
-            tooltip: {
-                formatter: function(params) {
-                    return params.data.name + '<br/>' +
-                           '热度指数: ' + params.data.value[0] + '<br/>' +
-                           '成交活跃度: ' + params.data.value[1] + '%<br/>' +
-                           '市场关注度: ' + params.data.value[2];
-                }
-            },
-            grid: { left: '3%', right: '10%', bottom: '3%', containLabel: true },
-            xAxis: {
-                type: 'value',
-                name: '热度指数',
-                nameLocation: 'middle',
-                nameGap: 25,
-                max: 100,
-                axisLine: { lineStyle: { color: '#00F3FF' } },
-                axisLabel: { color: '#888' },
-                splitLine: { lineStyle: { color: 'rgba(0,243,255,0.1)' } }
-            },
-            yAxis: {
-                type: 'value',
-                name: '成交活跃度',
-                nameLocation: 'middle',
-                nameGap: 40,
-                max: 80,
-                axisLine: { lineStyle: { color: '#00F3FF' } },
-                axisLabel: { color: '#888' },
-                splitLine: { lineStyle: { color: 'rgba(0,243,255,0.1)' } }
-            },
-            series: [{
-                type: 'scatter',
-                symbolSize: function(data) {
-                    return data[2] * 1.5;
-                },
-                data: conceptData,
-                itemStyle: {
-                    color: function(params) {
-                        var value = params.data.value[0];
-                        if (value >= 70) return '#FF2A6D';
-                        if (value >= 50) return '#FFC800';
-                        return '#05FFA1';
-                    },
-                    shadowBlur: 20,
-                    shadowColor: 'rgba(0, 243, 255, 0.5)'
-                },
-                label: {
-                    show: true,
-                    formatter: '{b}',
-                    color: '#fff',
-                    fontSize: 10,
-                    position: 'top'
-                }
-            }]
-        };
-        conceptChart.setOption(conceptOption);
-        
-        // 词云图
-        var wordCloudChart = echarts.init(document.getElementById('wordCloudChart'));
-        var wordCloudOption = {
-            tooltip: {
-                show: true,
-                formatter: function(params) {
-                    return params.name + ': ' + params.value;
-                }
-            },
-            series: [{
-                type: 'wordCloud',
-                shape: 'circle',
-                left: 'center',
-                top: 'center',
-                width: '90%',
-                height: '90%',
-                sizeRange: [14, 60],
-                rotationRange: [-45, 45],
-                rotationStep: 15,
-                gridSize: 8,
-                drawOutOfBound: false,
-                textStyle: {
-                    fontFamily: 'Microsoft YaHei',
-                    fontWeight: 'bold',
-                    color: function() {
-                        var colors = ['#00F3FF', '#FF2A6D', '#05FFA1', '#FFC800', '#FF6B6B'];
-                        return colors[Math.floor(Math.random() * colors.length)];
-                    }
-                },
-                emphasis: {
-                    textStyle: {
-                        shadowBlur: 10,
-                        shadowColor: '#00F3FF'
-                    }
-                },
                 data: [
-                    { name: 'CPO光通信', value: 100 },
-{ name: '创业板新高', value: 95 },
-                    { name: '算力概念', value: 90 },
-                    { name: '科技成长', value: 85 },
-                    { name: '半导体', value: 80 },
-                    { name: '源杰科技', value: 78 },
-                    { name: '剑桥科技', value: 75 },
-                    { name: '玻璃基板', value: 72 },
-                    { name: '分化行情', value: 70 },
-                    { name: '缩量上涨', value: 68 },
-                    { name: '北证50', value: 65 },
-                    { name: '稀土永磁', value: 60 },
-                    { name: '光伏反弹', value: 58 },
-                    { name: '业绩雷', value: 55 },
-                    { name: '交割日', value: 52 },
-                    { name: '国新办', value: 50 },
-                    { name: '十五五', value: 48 },
-                    { name: '茅台', value: 45 },
-                    { name: 'AI轮动', value: 42 },
-                    { name: '电子板块', value: 40 }
-                ]
+                    { value: -0.24, itemStyle: { color: '#05FFA1' } },
+                    { value: -0.01, itemStyle: { color: '#05FFA1' } },
+                    { value: -1.30, itemStyle: { color: '#05FFA1' } },
+                    { value: -1.68, itemStyle: { color: '#05FFA1' } },
+                    { value: -1.98, itemStyle: { color: '#FF2A6D' } },
+                    { value: 0.39, itemStyle: { color: '#FF2A6D' } },
+                    { value: 1.45, itemStyle: { color: '#FF2A6D' } },
+                    { value: 1.51, itemStyle: { color: '#FF2A6D' } },
+                    { value: 2.67, itemStyle: { color: '#FF2A6D' } }
+                ],
+                barWidth: '60%',
+                itemStyle: { borderRadius: [0, 5, 5, 0] },
+                animationDuration: 1500
             }]
-        };
-        wordCloudChart.setOption(wordCloudOption);
-        
-        // 响应式调整
+        });
+
+        // 概念气泡图
+        const conceptChart = echarts.init(document.getElementById('conceptChart'));
+        conceptChart.setOption({
+            tooltip: { trigger: 'item', formatter: function(p) { return p.data[2] + '<br/>热度: ' + p.data[1] + '<br/>涨跌: ' + p.data[3] + '%'; } },
+            series: [{
+                type: 'graph',
+                layout: 'force',
+                symbolSize: function(data) { return Math.sqrt(data[1]) * 3; },
+                roam: true,
+                label: { show: true, formatter: '{b}', color: '#fff', fontSize: 12 },
+                data: [
+                    { name: 'CPO概念', x: 150, y: 150, value: [150, 98, 'CPO概念', 5.2] },
+                    { name: '光模块', x: 350, y: 200, value: [350, 92, '光模块', 4.8] },
+                    { name: 'AI算力', x: 250, y: 100, value: [250, 95, 'AI算力', 3.5] },
+                    { name: '锂电池', x: 450, y: 280, value: [450, 78, '锂电池', 2.1] },
+                    { name: '半导体', x: 100, y: 300, value: [100, 72, '半导体', 1.8] },
+                    { name: '光刻机', x: 380, y: 120, value: [380, 65, '光刻机', 2.5] },
+                    { name: '机器人', x: 200, y: 320, value: [200, 68, '机器人', 1.2] },
+                    { name: '新能源车', x: 480, y: 180, value: [480, 55, '新能源车', 0.8] },
+                    { name: '储能', x: 300, y: 350, value: [300, 52, '储能', 1.5] },
+                    { name: '算力租赁', x: 150, y: 200, value: [150, 85, '算力租赁', 3.2] }
+                ],
+                lineStyle: { opacity: 0.3, color: '#00F3FF' },
+                itemStyle: { color: function(p) { return p.data.value[3] > 0 ? '#FF2A6D' : '#05FFA1'; } },
+                force: { repulsion: 150, edgeLength: [50, 150] }
+            }]
+        });
+
+        // 响应式
         window.addEventListener('resize', function() {
             industryChart.resize();
             conceptChart.resize();
-            wordCloudChart.resize();
         });
     </script>
 </body>
