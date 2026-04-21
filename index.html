@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026年4月20日 A股市场分析报告</title>
+    <title>2026年4月21日 A股市场分析报告</title>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -121,7 +121,7 @@
             height: 90px;
             background: linear-gradient(to top, #FF2A6D, #00F3FF);
             transform-origin: bottom center;
-            transform: translateX(-50%) rotate(60deg);
+            transform: translateX(-50%) rotate(40deg);
             border-radius: 2px;
         }
         .gauge-center {
@@ -151,9 +151,9 @@
             padding: 5px 20px;
             border-radius: 20px;
             font-size: 1.1em;
-            background: rgba(255, 42, 109, 0.2);
-            border: 1px solid #FF2A6D;
-            color: #FF2A6D;
+            background: rgba(0, 243, 255, 0.2);
+            border: 1px solid #00F3FF;
+            color: #00F3FF;
         }
         
         /* 指数卡片 */
@@ -187,8 +187,8 @@
             border-radius: 50%;
             background: conic-gradient(
                 #00F3FF 0deg,
-                #00F3FF var(--percent, 75%),
-                #333 var(--percent, 75%)
+                #00F3FF var(--percent, 68%),
+                #333 var(--percent, 68%)
             );
             display: flex;
             align-items: center;
@@ -329,7 +329,7 @@
     <div class="container">
         <div class="header">
             <h1>A股市场分析报告</h1>
-            <div class="subtitle">2026年4月20日 · 赛博朋克风格</div>
+            <div class="subtitle">2026年4月21日 · 赛博朋克风格</div>
         </div>
         
         <div class="grid">
@@ -340,7 +340,7 @@
                     <div class="gauge-container">
                         <div class="gauge-bg"></div>
                         <div class="gauge-inner"></div>
-                        <div class="gauge-needle" style="transform: translateX(-50%) rotate(55deg);"></div>
+                        <div class="gauge-needle" style="transform: translateX(-50%) rotate(40deg);"></div>
                         <div class="gauge-center"></div>
                     </div>
                     <div class="sentiment-labels">
@@ -348,8 +348,8 @@
                         <span class="label-neutral">观望 50</span>
                         <span class="label-greed">贪婪 100</span>
                     </div>
-                    <div class="sentiment-value" style="color: #FF2A6D;">72</div>
-                    <div class="sentiment-tag">市场情绪：轻度贪婪</div>
+                    <div class="sentiment-value" style="color: #00F3FF;">48</div>
+                    <div class="sentiment-tag">市场情绪：谨慎观望</div>
                 </div>
             </div>
             
@@ -360,40 +360,40 @@
                     <div class="index-card">
                         <div class="index-name">上证指数</div>
                         <div class="index-code">000001.SH</div>
-                        <div class="index-price">4082.13</div>
-                        <div class="index-change up">+0.76%</div>
-                        <div class="index-detail">成交额 5,842亿</div>
+                        <div class="index-price">4085.08</div>
+                        <div class="index-change up">+0.07%</div>
+                        <div class="index-detail">成交额 10,333亿</div>
                     </div>
                     <div class="index-card">
                         <div class="index-name">深证成指</div>
                         <div class="index-code">399001.SZ</div>
-                        <div class="index-price">14639.95</div>
-                        <div class="index-change up">+0.55%</div>
-                        <div class="index-detail">成交额 8,234亿</div>
+                        <div class="index-price">14982.14</div>
+                        <div class="index-change up">+0.10%</div>
+                        <div class="index-detail">成交额 13,752亿</div>
                     </div>
                     <div class="index-card">
                         <div class="index-name">创业板指</div>
-<div class="index-code">399006.SZ</div>
-                        <div class="index-price">3626.27</div>
-                        <div class="index-change down">-0.02%</div>
-                        <div class="index-detail">成交额 3,896亿</div>
+                        <div class="index-code">399006.SZ</div>
+                        <div class="index-price">3688.94</div>
+                        <div class="index-change up">+0.31%</div>
+                        <div class="index-detail">成交额 6,340亿</div>
                     </div>
                 </div>
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <div class="value up">3424</div>
+                        <div class="value up">1949</div>
                         <div class="label">上涨股票</div>
                     </div>
                     <div class="stat-item">
-                        <div class="value down">1898</div>
+                        <div class="value down">3432</div>
                         <div class="label">下跌股票</div>
                     </div>
                     <div class="stat-item">
-                        <div class="value" style="color: #00F3FF;">90</div>
+                        <div class="value" style="color: #00F3FF;">65</div>
                         <div class="label">涨停数量</div>
                     </div>
                     <div class="stat-item">
-                        <div class="value" style="color: #888;">17</div>
+                        <div class="value" style="color: #888;">19</div>
                         <div class="label">跌停数量</div>
                     </div>
                 </div>
@@ -403,28 +403,28 @@
             <div class="card full-width">
                 <h2>量能指示器</h2>
                 <div class="volume-indicator">
-                    <div class="volume-circle" style="--percent: 82%;">
+                    <div class="volume-circle" style="--percent: 68%;">
                         <div class="volume-value">
-                            <div class="num">2.58</div>
+                            <div class="num">2.41</div>
                             <div class="unit">万亿元</div>
                         </div>
                     </div>
                     <div class="volume-stats">
                         <div class="volume-stat">
                             <span class="label">今日成交额</span>
-                            <span class="value up">25,787.7亿元</span>
+                            <span class="value down">24,085.44亿元</span>
                         </div>
                         <div class="volume-stat">
-<span class="label">较上日放量</span>
-                            <span class="value up">+1,531.86亿元</span>
+                            <span class="label">较上日缩量</span>
+                            <span class="value down">-1,702.26亿元</span>
                         </div>
                         <div class="volume-stat">
-                            <span class="label">放量幅度</span>
-                            <span class="value up">+6.32%</span>
+                            <span class="label">缩量幅度</span>
+                            <span class="value down">-6.60%</span>
                         </div>
                         <div class="volume-stat">
                             <span class="label">封板率</span>
-                            <span class="value">78.26%</span>
+                            <span class="value">77.38%</span>
                         </div>
                     </div>
                 </div>
@@ -446,18 +446,18 @@
             <div class="card full-width">
                 <h2>市场关键词</h2>
                 <div class="word-cloud">
-                    <span class="word-item word-xl tag-red">商业航天</span>
-                    <span class="word-item word-lg tag-blue">国防军工</span>
-                    <span class="word-item word-lg tag-red">6连板</span>
-                    <span class="word-item word-md tag-green">创业板新高</span>
-                    <span class="word-item word-md tag-blue">宁德时代</span>
-                    <span class="word-item word-md tag-red">服务器液冷</span>
-                    <span class="word-item word-sm tag-green">中船系</span>
-                    <span class="word-item word-sm tag-blue">绿电概念</span>
-                    <span class="word-item word-sm tag-red">航天日</span>
-                    <span class="word-item word-sm tag-green">电网设备</span>
-                    <span class="word-item word-xs tag-blue">SpaceX</span>
-                    <span class="word-item word-xs tag-red">小金属</span>
+                    <span class="word-item word-xl tag-blue">工业气体</span>
+                    <span class="word-item word-lg tag-red">铜箔覆铜板</span>
+                    <span class="word-item word-lg tag-blue">煤炭板块</span>
+                    <span class="word-item word-md tag-green">液冷服务器</span>
+                    <span class="word-item word-md tag-red">英维克跌停</span>
+                    <span class="word-item word-md tag-blue">天齐锂业</span>
+                    <span class="word-item word-sm tag-green">电子化学品</span>
+                    <span class="word-item word-sm tag-red">影视院线</span>
+                    <span class="word-item word-sm tag-blue">玻纤概念</span>
+<span class="word-item word-sm tag-green">算力走弱</span>
+                    <span class="word-item word-xs tag-red">英维克</span>
+                    <span class="word-item word-xs tag-green">ST亚光</span>
                 </div>
             </div>
             
@@ -465,22 +465,22 @@
             <div class="card">
                 <h2>涨幅居前板块</h2>
                 <ul class="sector-list">
-                    <li class="sector-up"><span class="sector-name">国防军工</span><span class="sector-change up">+3.28%</span></li>
-                    <li class="sector-up"><span class="sector-name">航天系/中船系</span><span class="sector-change up">+2.85%</span></li>
-                    <li class="sector-up"><span class="sector-name">电网设备</span><span class="sector-change up">+2.41%</span></li>
-                    <li class="sector-up"><span class="sector-name">小金属</span><span class="sector-change up">+2.17%</span></li>
-                    <li class="sector-up"><span class="sector-name">服务器液冷</span><span class="sector-change up">+1.96%</span></li>
+                    <li class="sector-up"><span class="sector-name">煤炭开采</span><span class="sector-change up">+2.04%</span></li>
+                    <li class="sector-up"><span class="sector-name">公用事业</span><span class="sector-change up">+1.14%</span></li>
+                    <li class="sector-up"><span class="sector-name">电力设备</span><span class="sector-change up">+0.67%</span></li>
+                    <li class="sector-up"><span class="sector-name">交通运输</span><span class="sector-change up">+0.52%</span></li>
+                    <li class="sector-up"><span class="sector-name">轻工制造</span><span class="sector-change up">+0.44%</span></li>
                 </ul>
             </div>
             
             <div class="card">
                 <h2>跌幅居前板块</h2>
                 <ul class="sector-list">
-                    <li class="sector-down"><span class="sector-name">芬太尼</span><span class="sector-change down">-2.34%</span></li>
-                    <li class="sector-down"><span class="sector-name">盐湖提锂</span><span class="sector-change down">-1.89%</span></li>
-                    <li class="sector-down"><span class="sector-name">能源金属</span><span class="sector-change down">-1.67%</span></li>
-                    <li class="sector-down"><span class="sector-name">生物制品</span><span class="sector-change down">-1.45%</span></li>
-                    <li class="sector-down"><span class="sector-name">化学制药</span><span class="sector-change down">-1.23%</span></li>
+                    <li class="sector-down"><span class="sector-name">计算机</span><span class="sector-change down">-1.82%</span></li>
+                    <li class="sector-down"><span class="sector-name">综合</span><span class="sector-change down">-1.31%</span></li>
+                    <li class="sector-down"><span class="sector-name">商贸零售</span><span class="sector-change down">-0.90%</span></li>
+                    <li class="sector-down"><span class="sector-name">生物制品</span><span class="sector-change down">-0.75%</span></li>
+                    <li class="sector-down"><span class="sector-name">IT服务</span><span class="sector-change down">-0.68%</span></li>
                 </ul>
             </div>
             
@@ -489,11 +489,11 @@
                 <h2>策略警示</h2>
                 <div class="strategy-box">
                     <ul class="strategy-list">
-                        <li><strong style="color: #00F3FF;">热点轮动加速：</strong>商业航天、军工持续活跃，注意高位股回调风险</li>
-                        <li><strong style="color: #00F3FF;">量能配合良好：</strong>成交额突破2.5万亿，市场活跃度较高</li>
-                        <li><strong style="color: #00F3FF;">连板效应明显：</strong>博云新材6连板、圣阳股份8连板，连板股总数14只</li>
-                        <li><strong style="color: #FF2A6D;">风险提示：</strong>创业板指冲高回落，注意获利了结压力</li>
-                        <li><strong style="color: #05FFA1;">机会关注：</strong>4月24日中国航天日临近，商业航天板块或有持续催化</li>
+                        <li><strong style="color: #05FFA1;">缩量整理：</strong>成交额降至2.41万亿元，量能萎缩显示市场观望情绪升温</li>
+                        <li><strong style="color: #00F3FF;">热点切换：</strong>昨日强势的液冷服务器、计算机等科技股今日回调，资金转向煤炭、电力等防御板块</li>
+                        <li><strong style="color: #FF2A6D;">高位风险：</strong>英维克、圣阳股份等前期强势股跌停，注意高位股补跌风险</li>
+                        <li><strong style="color: #00F3FF;">连板效应：</strong>株冶集团4连板、神剑股份5天3板，连板股保持活跃</li>
+                        <li><strong style="color: #05FFA1;">节前效应：</strong>临近五一假期，部分资金或选择兑现，建议控制仓位</li>
                     </ul>
                 </div>
             </div>
@@ -503,27 +503,27 @@
                 <h2>今日热点个股</h2>
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <div class="value" style="color: #FF2A6D;">博云新材</div>
-                        <div class="label">6连板 · 业绩超预期</div>
+                        <div class="value" style="color: #FF2A6D;">华特气体</div>
+                        <div class="label">涨停 · 工业气体</div>
                     </div>
                     <div class="stat-item">
-                        <div class="value" style="color: #FF2A6D;">圣阳股份</div>
-                        <div class="label">8连板 · 服务器液冷</div>
+                        <div class="value" style="color: #FF2A6D;">方邦股份</div>
+                        <div class="label">20CM涨停 · 铜箔/覆铜板</div>
                     </div>
                     <div class="stat-item">
-                        <div class="value" style="color: #FF2A6D;">有研复材</div>
-                        <div class="label">20%涨停 · 商业航天</div>
+                        <div class="value" style="color: #FF2A6D;">甘肃能化</div>
+                        <div class="label">涨超8% · 煤炭板块</div>
                     </div>
                     <div class="stat-item">
-                        <div class="value" style="color: #FF2A6D;">汇源通信</div>
-                        <div class="label">12天6板 · 光纤</div>
+                        <div class="value" style="color: #FF2A6D;">聚星科技</div>
+                        <div class="label">26%涨停 · 电力设备</div>
                     </div>
                 </div>
             </div>
         </div>
         
         <div class="footer">
-            <p>数据来源：东方财富、同花顺、界面新闻 | 生成时间：2026年4月20日 19:00</p>
+            <p>数据来源：东方财富、同花顺、界面新闻 | 生成时间：2026年4月21日 19:00</p>
             <p style="margin-top: 10px; color: #00F3FF;">Matrix Agent 自动化报告系统</p>
         </div>
     </div>
@@ -537,24 +537,24 @@
             xAxis: { type: 'value', axisLine: { lineStyle: { color: '#00F3FF' } }, splitLine: { lineStyle: { color: 'rgba(0,243,255,0.2)' } }, axisLabel: { color: '#888' } },
             yAxis: {
                 type: 'category',
-                data: ['化学制药', '生物制品', '能源金属', '盐湖提锂', '芬太尼', '建筑装饰', '电力设备', '计算机', '小金属', '电网设备', '国防军工'],
+                data: ['IT服务', '生物制品', '商贸零售', '综合', '计算机', '通信', '国防军工', '轻工制造', '交通运输', '电力设备', '公用事业', '煤炭开采'],
                 axisLine: { lineStyle: { color: '#00F3FF' } },
                 axisLabel: { color: '#E0E0E0' }
             },
             series: [{
                 type: 'bar',
                 data: [
-                    { value: -1.23, itemStyle: { color: '#05FFA1' } },
-                    { value: -1.45, itemStyle: { color: '#05FFA1' } },
-                    { value: -1.67, itemStyle: { color: '#05FFA1' } },
-                    { value: -1.89, itemStyle: { color: '#05FFA1' } },
-                    { value: -2.34, itemStyle: { color: '#05FFA1' } },
-                    { value: 0.38, itemStyle: { color: '#FF2A6D' } },
-                    { value: 0.89, itemStyle: { color: '#FF2A6D' } },
-                    { value: 1.23, itemStyle: { color: '#FF2A6D' } },
-                    { value: 2.17, itemStyle: { color: '#FF2A6D' } },
-                    { value: 2.41, itemStyle: { color: '#FF2A6D' } },
-                    { value: 3.28, itemStyle: { color: '#FF2A6D' } }
+                    { value: -0.68, itemStyle: { color: '#05FFA1' } },
+                    { value: -0.75, itemStyle: { color: '#05FFA1' } },
+                    { value: -0.90, itemStyle: { color: '#05FFA1' } },
+                    { value: -1.31, itemStyle: { color: '#05FFA1' } },
+                    { value: -1.82, itemStyle: { color: '#05FFA1' } },
+                    { value: 0.23, itemStyle: { color: '#FF2A6D' } },
+                    { value: 0.44, itemStyle: { color: '#FF2A6D' } },
+                    { value: 0.52, itemStyle: { color: '#FF2A6D' } },
+                    { value: 0.67, itemStyle: { color: '#FF2A6D' } },
+                    { value: 1.14, itemStyle: { color: '#FF2A6D' } },
+                    { value: 2.04, itemStyle: { color: '#FF2A6D' } }
                 ],
                 label: { show: true, position: 'right', color: '#E0E0E0', formatter: '{c}%' },
                 barWidth: '50%'
@@ -573,16 +573,16 @@
                 type: 'scatter',
                 symbolSize: function(d) { return Math.sqrt(d[0]) * 2; },
                 data: [
-                    [95, 4.5, '商业航天'],
-                    [88, 3.8, '国防军工'],
-                    [82, 3.2, '中船系'],
-                    [78, 2.9, '服务器液冷'],
-                    [72, 2.5, '电网设备'],
-                    [68, 2.1, '绿电概念'],
-                    [65, 1.8, '小金属'],
-                    [60, -1.5, '生物制品'],
-                    [55, -2.1, '盐湖提锂'],
-                    [48, -2.8, '芬太尼']
+                    [92, 3.5, '工业气体'],
+                    [85, 3.2, '铜箔/覆铜板'],
+                    [78, 2.8, '玻纤'],
+                    [75, 2.5, '电子化学品'],
+                    [70, 2.2, '煤炭采选'],
+                    [65, 1.8, '影视院线'],
+                    [60, 1.5, '电力设备'],
+                    [55, -2.5, '液冷服务器'],
+                    [50, -3.2, '算力'],
+                    [45, -4.5, '英维克']
                 ],
                 itemStyle: {
                     color: function(p) { return p.data[1] >= 0 ? '#FF2A6D' : '#05FFA1'; },
